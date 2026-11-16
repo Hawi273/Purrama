@@ -7,8 +7,10 @@
         content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://image.tmdb.org; connect-src https://purrama-api.syzmon-hawajski.workers.dev http://localhost:8787; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Purrama</title>
-  <link rel="stylesheet" href="styles.css">
-  <script type="module" src="app.js"></script>
+  <!-- Bump ?v= here and in app.js on every release, so browsers never mix a
+       new page with JS or CSS cached from the previous one (Pages caches 10 min). -->
+  <link rel="stylesheet" href="styles.css?v=2">
+  <script type="module" src="app.js?v=2"></script>
 </head>
 <body>
   <header class="top">

@@ -1,4 +1,4 @@
-import { API_BASE } from './config.js';
+import { API_BASE } from './config.js?v=2'; // keep in step with ?v= in index.html
 
 const IMG_BASE = 'https://image.tmdb.org/t/p/w342';
 const STORE_KEY = 'purrama:ratings:v1';
