@@ -2,6 +2,11 @@ name = "purrama-api"
 main = "src/index.js"
 compatibility_date = "2026-10-01"
 
+# Serve only at purrama-api.<subdomain>.workers.dev; no extra per-version
+# preview URLs that could also be used to reach TMDB with the token.
+workers_dev = true
+preview_urls = false
+
 # Sites allowed to call this proxy. The TMDB token is NOT here: set it with
 #   npx wrangler secret put TMDB_TOKEN
 [vars]
