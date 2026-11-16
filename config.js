@@ -4,4 +4,4 @@ const LOCAL = ['localhost', '127.0.0.1'].includes(location.hostname);
 
 export const API_BASE = LOCAL
   ? 'http://localhost:8787'
-  : 'https://purrama-api.YOUR-SUBDOMAIN.workers.dev'; // set after `wrangler deploy`
+  : 'https://purrama-api.syzmon-hawajski.workers.dev';
