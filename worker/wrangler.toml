@@ -7,10 +7,10 @@ compatibility_date = "2026-10-01"
 workers_dev = true
 preview_urls = false
 
-# Sites allowed to call this proxy. The TMDB token is NOT here: set it with
-#   npx wrangler secret put TMDB_TOKEN
+# Production: only the GitHub Pages site may call this proxy.
+# The TMDB token is NOT here: it is the Worker secret TMDB_TOKEN.
 [vars]
-ALLOWED_ORIGINS = "https://hawi273.github.io,http://localhost:8000,http://127.0.0.1:8000"
+ALLOWED_ORIGINS = "https://hawi273.github.io"
 
 # 120 requests per minute per visitor IP (a details page makes a few calls).
 [[ratelimits]]
@@ -20,3 +20,19 @@ namespace_id = "1001"
   [ratelimits.simple]
   limit = 120
   period = 60
+
+# Local development only (`npm run dev:api` = wrangler dev --env dev).
+# Never deployed: Cloudflare builds run `wrangler deploy` without --env.
+[env.dev]
+workers_dev = false
+
+  [env.dev.vars]
+  ALLOWED_ORIGINS = "http://localhost:8000,http://127.0.0.1:8000"
+
+  [[env.dev.ratelimits]]
+  name = "RATE_LIMITER"
+  namespace_id = "1001"
+
+    [env.dev.ratelimits.simple]
+    limit = 120
+    period = 60

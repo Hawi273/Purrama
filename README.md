@@ -55,15 +55,51 @@ npm install
    ```
 3. Open http://localhost:8000. `config.js` uses the local Worker automatically.
 
+**Production stays production-only.** The committed files carry no local settings:
+
+- `index.html`'s CSP allows only the production Worker. `npm run dev:site` adds `http://127.0.0.1:8787` to it when serving pages locally.
+- `worker/wrangler.toml`'s top-level `[vars]` (what Cloudflare deploys) allow only `https://hawi273.github.io`. `npm run dev:api` runs the `[env.dev]` environment, which allows only `localhost:8000` and `127.0.0.1:8000` and is never deployed.
+- `test/production.test.js` fails if either picks up a local address.
+
+If port 8787 is taken, end the leftover `wrangler`/`workerd` processes, or temporarily change the port in `package.json`, `config.js` and `scripts/serve.mjs` (don't commit that change).
+
 ### Checks
 
 ```bash
-npm run check   # TypeScript (strict, checkJs), ESLint, unit + Worker tests
+npm run check     # TypeScript (strict, checkJs), ESLint, tests, and "index.html is current"
+npm run release   # after changing anything in src/, config.js or styles/
 ```
+
+| Test file | Covers |
+|---|---|
+| `test/worker.test.js` | Worker against a fake TMDB: origin lock, route allowlist, query validation, token only in the `Authorization` header |
+| `test/client.test.js` | API client: URL building, shared in-flight requests, cache, error kinds |
+| `test/tmdb.test.js` | request building: discover filters, details `append_to_response`, decade ranges, trailer choice |
+| `test/images-router.test.js` | TMDB image URL validation, hash routes |
+| `test/library.test.js` | lists and ratings, v1 migration, damaged storage |
+| `test/release.test.js` | import map covers every module, CSP hash matches, `index.html` is current |
+
+Pages, UI components and styles have no unit tests; they are checked in a real browser (gstack `/qa`, reports in `.gstack/qa-reports/`, git-ignored).
+
+### Releasing a change (cache busting)
+
+GitHub Pages lets browsers cache files for 10 minutes and there is no build step, so `scripts/release.mjs` versions everything in `index.html` by a hash of the source files:
+
+- an inline **import map** maps every module (`./src/**/*.js`, `./config.js`) to `…?v=<hash>`, so relative and lazy imports are versioned too;
+- the stylesheet and `src/main.js` links get the same `?v=`;
+- the CSP's `script-src` carries the import map's `sha256`, so the inline map is allowed and nothing else is.
+
+Run `npm run release` before committing source changes; `npm run check` fails if you forget. `.gitattributes` keeps files LF so the hash matches on every checkout.
+
+### gstack
+
+This repo uses [gstack](https://github.com/garrytan/gstack) in team mode (`CLAUDE.md`, `.claude/`). Its test mapping for `/verify` and `/ship` (which test covers which file) lives outside the repo in `~/.gstack/projects/Hawi273-Purrama/pregate.json`, because `.gstack/` is git-ignored and policy is read from `main`.
 
 ## Deploy
 
-- **Site:** GitHub Pages builds from `main`, repo root. Bump `?v=` on the CSS and JS links in `index.html` with each release so browsers never mix new and cached files.
+All work happens on `dev`. Nothing goes live until `dev` is merged into `main`, which deploys both:
+
+- **Site:** GitHub Pages builds from `main`, repo root (no build step). Versions in `index.html` come from `npm run release`.
 - **Worker:** Cloudflare Workers Builds deploys `worker/` from `main` on every push. The token is the Worker secret `TMDB_TOKEN` (Cloudflare → Workers & Pages → purrama-api → Settings → Variables and Secrets).
 
 ## Keeping the token secret
@@ -74,7 +110,9 @@ npm run check   # TypeScript (strict, checkJs), ESLint, unit + Worker tests
 
 ## Design
 
-The look comes from the Purrama brand kit in `design/purrama-brand-kit/` (Midnight Cushion: night-green surfaces, 2.5px outlines, hard offset shadows, one amber action per screen, Fredoka + Nunito, Mochi the cat). Figma screens: `Purrama-Website.figcraft`.
+The look comes from the Purrama brand kit in `design/purrama-brand-kit/` (Midnight Cushion: night-green surfaces, 2.5px outlines, hard offset shadows, one amber action per screen, Fredoka + Nunito, Mochi the cat). The Figma screens (`*.figcraft`) are kept locally and are git-ignored.
+
+Accessibility: visible focus rings, a skip link, real buttons and links, 44px touch targets on phones, and all motion stops under the system's reduced-motion setting.
 
 ## Attribution
 

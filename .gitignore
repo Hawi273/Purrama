@@ -8,3 +8,6 @@
 node_modules/
 .wrangler/
 .gstack/
+
+# Design source files kept locally, never committed
+*.figcraft
