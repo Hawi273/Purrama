@@ -7,3 +7,4 @@
 # Tooling
 node_modules/
 .wrangler/
+.gstack/
