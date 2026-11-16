@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purrama — Home</title>
+<link rel="icon" href="../assets/logo/purrama-logo.svg">
+<link rel="stylesheet" href="../css/purrama.css">
+<link rel="stylesheet" href="../css/templates.css">
+</head>
+<body style="margin: 0;">
+<div class="pr-root" style="min-height: 100vh;">
+
+<header class="pr-appbar" style="font-family: var(--font-body); color: var(--text-primary); padding-left: max(24px, calc((100% - 1200px) / 2)); padding-right: max(24px, calc((100% - 1200px) / 2));">
+<a class="pr-appbar__brand" href="home.html">
+<img alt="" class="pr-appbar__logo" src="../assets/logo/purrama-logo.svg"/>
+<span class="pr-appbar__wordmark">purrama</span>
+</a>
+<nav aria-label="Main" class="pr-appbar__nav">
+<a aria-current="page" href="home.html">Films</a><a href="ratings.html">Ratings</a><a href="ratings.html">Watchlist</a>
+</nav>
+<label class="pr-search">
+<svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg>
+<input aria-label="Search films" placeholder="Search films, people…" type="search"/>
+</label>
+<a aria-label="Your profile" class="pr-btn pr-btn--quiet pr-btn--icon" href="ratings.html"><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg></a>
+</header>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 40px 24px 64px; display: flex; flex-direction: column; gap: 56px;">
+<section class="pr-card pr-card--hero" style="display: flex; flex-wrap: wrap; align-items: center;">
+<div style="flex: 999 1 420px; padding: 48px 48px 48px; display: flex; flex-direction: column; gap: 16px;">
+<span class="pt-meta" style="text-transform: uppercase; letter-spacing: 0.1em; font-weight: 800;">Good evening</span>
+<h1 style="margin: 0; font: 600 clamp(40px, 5vw, 64px)/1.02 var(--font-display);">What are we watching tonight?</h1>
+<p style="margin: 0; max-width: 560px; font: 400 17px/1.65 var(--font-body); color: var(--text-secondary);">Rate what you watched, keep a list for later, and look up any film in a glance. Mochi will keep the lights low.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px;">
+<a class="pr-btn pr-btn--primary" href="film.html">Rate a film you watched</a>
+<a class="pr-btn pr-btn--brand" href="search.html">Browse films</a>
+</div>
+</div>
+<div style="flex: 1 1 280px; display: flex; justify-content: center; align-items: flex-end; padding: 24px 32px 0; align-self: stretch; background: var(--surface-200); border-left: var(--border-edge) solid var(--edge);">
+
+<div style="display: inline-block; line-height: 0; color: var(--text-primary); font-family: var(--font-body);">
+<svg aria-label="Mochi gazing at the moon" class="pm pm--night" height="280" role="img" viewbox="0 0 240 240" width="280">
+<ellipse class="pm-ground" cx="120" cy="227" rx="62" ry="7"></ellipse>
+<g class="pm-prop pm-night">
+<path class="pm-moon" d="M204 16 a22 22 0 1 0 24 30 a17 17 0 1 1 -24 -30z"></path>
+<circle class="pm-twinkle" cx="30" cy="34" r="3"></circle>
+<circle class="pm-twinkle" cx="54" cy="76" r="2.5"></circle>
+<circle class="pm-twinkle" cx="214" cy="96" r="2.5"></circle>
+</g>
+<g class="pm-cat">
+<g class="pm-tail">
+<path class="pm-tail-out" d="M158 206 C200 206 212 166 190 144"></path>
+<path class="pm-tail-in" d="M158 206 C200 206 212 166 190 144"></path>
+</g>
+<ellipse class="pm-fur pm-body" cx="120" cy="180" rx="54" ry="44"></ellipse>
+<path class="pm-stripe" d="M147 170 C153 177 154 185 151 193"></path>
+<path class="pm-stripe" d="M161 176 C167 183 168 191 165 199"></path>
+<ellipse class="pm-fur" cx="100" cy="221" rx="16" ry="9"></ellipse>
+<ellipse class="pm-fur pm-paw-r" cx="140" cy="221" rx="16" ry="9"></ellipse>
+<g class="pm-wave">
+<path class="pm-arm-out" d="M146 186 L196 132"></path>
+<path class="pm-arm-in" d="M146 186 L196 132"></path>
+<circle class="pm-fur" cx="196" cy="132" r="11"></circle>
+</g>
+<g class="pm-head">
+<g transform="translate(-5 -118) scale(0.88)">
+<path class="pm-fur pm-fur-head" d="M85.6 230.8 C77.6 190.8 80 169.2 92.8 166 C104 166 115.2 173.2 126.4 187.6 C139.2 183.6 152 184.4 164.8 190 C176 175.6 186.4 170 196 173.2 C205.6 179.6 205.6 200.4 196 235.6 C196 274 169.6 293.2 140.8 293.2 C109.6 293.2 83.2 269.2 85.6 230.8 Z"></path>
+<path class="pm-ear-in" d="M94 178 C96 174.667 102.333 178.667 113 190 L97 198 C92.333 190 91.333 183.333 94 178 Z"></path>
+<path class="pm-ear-in" d="M193 183 C191 179.667 186 182.667 178 192 L190 200 C194.667 194 195.667 188.333 193 183 Z"></path>
+<g class="pm-eyes-open">
+<g class="pm-pupils">
+<circle class="pm-eye" cx="120.4" cy="240" r="8.5"></circle>
+<circle class="pm-eye" cx="161.2" cy="240" r="8.5"></circle>
+<circle class="pm-shine" cx="123.4" cy="236.6" r="2.6"></circle>
+<circle class="pm-shine" cx="164.2" cy="236.6" r="2.6"></circle>
+</g>
+</g>
+<g class="pm-eyes-closed">
+<path class="pm-lid" d="M109.6 238 C116.8 244.4 124 244.4 131.2 238"></path>
+<path class="pm-lid" d="M150.4 238 C157.6 244.4 164.8 244.4 172 238"></path>
+</g>
+<path class="pm-nose" d="M134.8 254.8 C138.8 252.4 142.8 252.4 146.8 254.8 C145.2 259.6 143.2 262.4 140.8 263.2 C138.4 262.4 136.4 259.6 134.8 254.8 Z"></path>
+<ellipse class="pm-blush" cx="105.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<ellipse class="pm-blush" cx="176.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<path class="pm-prop pm-tear" d="M114 252 C114 252 107 262 107 266 a7 7 0 0 0 14 0 C121 262 114 252 114 252 Z"></path>
+</g>
+</g>
+<g class="pm-prop pm-popcorn">
+<g class="pm-pops">
+<circle class="pm-kernel pm-pop" cx="112" cy="162" r="6"></circle>
+<circle class="pm-kernel pm-pop" cx="130" cy="160" r="6"></circle>
+</g>
+<circle class="pm-kernel" cx="104" cy="176" r="9"></circle>
+<circle class="pm-kernel" cx="120" cy="171" r="10"></circle>
+<circle class="pm-kernel" cx="136" cy="176" r="9"></circle>
+<path class="pm-bucket" d="M92 180 L148 180 L141 232 L99 232 Z"></path>
+<path class="pm-bucket-stripe" d="M107 182 L110 230 M133 182 L130 230"></path>
+</g>
+</g>
+<text class="pm-prop pm-q" x="186" y="76">?</text>
+<g class="pm-prop pm-zzz">
+<text class="pm-z" x="168" y="66">z</text>
+<text class="pm-z" x="184" y="46">z</text>
+<text class="pm-z" x="202" y="26">Z</text>
+</g>
+<g class="pm-prop pm-stars">
+<g transform="translate(22 40)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(186 26) scale(1.2)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(196 92) scale(0.8)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+</g>
+<g class="pm-prop pm-hearts">
+<g transform="translate(176 44) scale(1.3)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+<g transform="translate(36 64)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+</g>
+<g class="pm-prop pm-dots">
+<circle cx="96" cy="14" r="6"></circle>
+<circle cx="120" cy="14" r="6"></circle>
+<circle cx="144" cy="14" r="6"></circle>
+</g>
+</svg>
+</div>
+
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px;">
+<h2 class="pt-h2">Waiting for your rating</h2>
+<span class="pt-meta">You marked these as watched</span>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 28px;">
+
+<div class="pt-tile">
+<div aria-label="Past Lives poster" class="pr-poster pr-poster--brand" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Past Lives</span><span class="pt-meta">2023 · Drama</span></div>
+<a class="pr-btn pr-btn--primary pr-btn--sm" href="film.html" style="align-self: flex-start;">Rate</a>
+</div>
+
+<div class="pt-tile">
+<div aria-label="Arrival poster" class="pr-poster" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Arrival</span><span class="pt-meta">2016 · Sci-fi</span></div>
+<a class="pr-btn pr-btn--primary pr-btn--sm" href="film.html" style="align-self: flex-start;">Rate</a>
+</div>
+
+<div class="pt-tile">
+<div aria-label="The Grand Budapest Hotel poster" class="pr-poster pr-poster--accent" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">The Grand Budapest Hotel</span><span class="pt-meta">2014 · Comedy</span></div>
+<a class="pr-btn pr-btn--primary pr-btn--sm" href="film.html" style="align-self: flex-start;">Rate</a>
+</div>
+
+<div class="pt-tile">
+<div aria-label="Coco poster" class="pr-poster pr-poster--brand" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Coco</span><span class="pt-meta">2017 · Animation</span></div>
+<a class="pr-btn pr-btn--primary pr-btn--sm" href="film.html" style="align-self: flex-start;">Rate</a>
+</div>
+
+<div class="pt-tile">
+<div aria-label="Knives Out poster" class="pr-poster" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Knives Out</span><span class="pt-meta">2019 · Mystery</span></div>
+<a class="pr-btn pr-btn--primary pr-btn--sm" href="film.html" style="align-self: flex-start;">Rate</a>
+</div>
+
+</div>
+</section>
+<section style="display: flex; flex-direction: column; gap: 20px;">
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px;">
+<h2 class="pt-h2">Fresh picks for you</h2>
+<a class="pt-link" href="search.html">See all</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 28px;">
+
+<a class="pt-tile" href="film.html">
+<div aria-label="Perfect Days poster" class="pr-poster" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Perfect Days</span><span class="pt-meta">2023 · Drama</span></div>
+</a>
+
+<a class="pt-tile" href="film.html">
+<div aria-label="Dune: Part Two poster" class="pr-poster pr-poster--accent" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Dune: Part Two</span><span class="pt-meta">2024 · Sci-fi</span></div>
+</a>
+
+<a class="pt-tile" href="film.html">
+<div aria-label="The Iron Giant poster" class="pr-poster pr-poster--brand" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">The Iron Giant</span><span class="pt-meta">1999 · Animation</span></div>
+</a>
+
+<a class="pt-tile" href="film.html">
+<div aria-label="Amélie poster" class="pr-poster" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Amélie</span><span class="pt-meta">2001 · Romance</span></div>
+</a>
+
+<a class="pt-tile" href="film.html">
+<div aria-label="Mad Max: Fury Road poster" class="pr-poster pr-poster--brand" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Mad Max: Fury Road</span><span class="pt-meta">2015 · Action</span></div>
+</a>
+
+<a class="pt-tile" href="film.html">
+<div aria-label="Spirited Away poster" class="pr-poster pr-poster--accent" role="img"></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span class="pt-tile-title">Spirited Away</span><span class="pt-meta">2001 · Animation</span></div>
+</a>
+
+</div>
+</section>
+<section style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 20px;">
+<h2 class="pt-h2">Your recent ratings</h2>
+<div style="display: flex; flex-direction: column; gap: 16px; padding-right: 6px;">
+
+<a class="pr-film-row" href="film.html" style="text-decoration: none;">
+<div aria-label="" class="pr-poster pr-poster--sm pr-poster--accent" role="img"></div>
+<div class="pr-film-row__text"><span class="pr-film-row__title">Spirited Away</span><span class="pr-film-row__meta">2001 · Hayao Miyazaki</span></div>
+<span aria-label="5 out of 5 stars" class="pr-stars pr-stars--sm" role="img"><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span></span>
+</a>
+
+<a class="pr-film-row" href="film.html" style="text-decoration: none;">
+<div aria-label="" class="pr-poster pr-poster--sm pr-poster--brand" role="img"></div>
+<div class="pr-film-row__text"><span class="pr-film-row__title">Alien</span><span class="pr-film-row__meta">1979 · Ridley Scott</span></div>
+<span aria-label="4 out of 5 stars" class="pr-stars pr-stars--sm" role="img"><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span></span>
+</a>
+
+<a class="pr-film-row" href="film.html" style="text-decoration: none;">
+<div aria-label="" class="pr-poster pr-poster--sm" role="img"></div>
+<div class="pr-film-row__text"><span class="pr-film-row__title">Paddington 2</span><span class="pr-film-row__meta">2017 · Paul King</span></div>
+<span aria-label="4 out of 5 stars" class="pr-stars pr-stars--sm" role="img"><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span class="is-on"><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span><span><svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></svg></span></span>
+</a>
+
+</div>
+</div>
+<aside class="pr-card" style="flex: 1 1 300px; display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center;">
+
+<div style="display: inline-block; line-height: 0; color: var(--text-primary); font-family: var(--font-body);">
+<svg aria-label="Mochi munching popcorn" class="pm pm--popcorn" height="140" role="img" viewbox="0 0 240 240" width="140">
+<ellipse class="pm-ground" cx="120" cy="227" rx="62" ry="7"></ellipse>
+<g class="pm-prop pm-night">
+<path class="pm-moon" d="M204 16 a22 22 0 1 0 24 30 a17 17 0 1 1 -24 -30z"></path>
+<circle class="pm-twinkle" cx="30" cy="34" r="3"></circle>
+<circle class="pm-twinkle" cx="54" cy="76" r="2.5"></circle>
+<circle class="pm-twinkle" cx="214" cy="96" r="2.5"></circle>
+</g>
+<g class="pm-cat">
+<g class="pm-tail">
+<path class="pm-tail-out" d="M158 206 C200 206 212 166 190 144"></path>
+<path class="pm-tail-in" d="M158 206 C200 206 212 166 190 144"></path>
+</g>
+<ellipse class="pm-fur pm-body" cx="120" cy="180" rx="54" ry="44"></ellipse>
+<path class="pm-stripe" d="M147 170 C153 177 154 185 151 193"></path>
+<path class="pm-stripe" d="M161 176 C167 183 168 191 165 199"></path>
+<ellipse class="pm-fur" cx="100" cy="221" rx="16" ry="9"></ellipse>
+<ellipse class="pm-fur pm-paw-r" cx="140" cy="221" rx="16" ry="9"></ellipse>
+<g class="pm-wave">
+<path class="pm-arm-out" d="M146 186 L196 132"></path>
+<path class="pm-arm-in" d="M146 186 L196 132"></path>
+<circle class="pm-fur" cx="196" cy="132" r="11"></circle>
+</g>
+<g class="pm-head">
+<g transform="translate(-5 -118) scale(0.88)">
+<path class="pm-fur pm-fur-head" d="M85.6 230.8 C77.6 190.8 80 169.2 92.8 166 C104 166 115.2 173.2 126.4 187.6 C139.2 183.6 152 184.4 164.8 190 C176 175.6 186.4 170 196 173.2 C205.6 179.6 205.6 200.4 196 235.6 C196 274 169.6 293.2 140.8 293.2 C109.6 293.2 83.2 269.2 85.6 230.8 Z"></path>
+<path class="pm-ear-in" d="M94 178 C96 174.667 102.333 178.667 113 190 L97 198 C92.333 190 91.333 183.333 94 178 Z"></path>
+<path class="pm-ear-in" d="M193 183 C191 179.667 186 182.667 178 192 L190 200 C194.667 194 195.667 188.333 193 183 Z"></path>
+<g class="pm-eyes-open">
+<g class="pm-pupils">
+<circle class="pm-eye" cx="120.4" cy="240" r="8.5"></circle>
+<circle class="pm-eye" cx="161.2" cy="240" r="8.5"></circle>
+<circle class="pm-shine" cx="123.4" cy="236.6" r="2.6"></circle>
+<circle class="pm-shine" cx="164.2" cy="236.6" r="2.6"></circle>
+</g>
+</g>
+<g class="pm-eyes-closed">
+<path class="pm-lid" d="M109.6 238 C116.8 244.4 124 244.4 131.2 238"></path>
+<path class="pm-lid" d="M150.4 238 C157.6 244.4 164.8 244.4 172 238"></path>
+</g>
+<path class="pm-nose" d="M134.8 254.8 C138.8 252.4 142.8 252.4 146.8 254.8 C145.2 259.6 143.2 262.4 140.8 263.2 C138.4 262.4 136.4 259.6 134.8 254.8 Z"></path>
+<ellipse class="pm-blush" cx="105.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<ellipse class="pm-blush" cx="176.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<path class="pm-prop pm-tear" d="M114 252 C114 252 107 262 107 266 a7 7 0 0 0 14 0 C121 262 114 252 114 252 Z"></path>
+</g>
+</g>
+<g class="pm-prop pm-popcorn">
+<g class="pm-pops">
+<circle class="pm-kernel pm-pop" cx="112" cy="162" r="6"></circle>
+<circle class="pm-kernel pm-pop" cx="130" cy="160" r="6"></circle>
+</g>
+<circle class="pm-kernel" cx="104" cy="176" r="9"></circle>
+<circle class="pm-kernel" cx="120" cy="171" r="10"></circle>
+<circle class="pm-kernel" cx="136" cy="176" r="9"></circle>
+<path class="pm-bucket" d="M92 180 L148 180 L141 232 L99 232 Z"></path>
+<path class="pm-bucket-stripe" d="M107 182 L110 230 M133 182 L130 230"></path>
+</g>
+</g>
+<text class="pm-prop pm-q" x="186" y="76">?</text>
+<g class="pm-prop pm-zzz">
+<text class="pm-z" x="168" y="66">z</text>
+<text class="pm-z" x="184" y="46">z</text>
+<text class="pm-z" x="202" y="26">Z</text>
+</g>
+<g class="pm-prop pm-stars">
+<g transform="translate(22 40)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(186 26) scale(1.2)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(196 92) scale(0.8)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+</g>
+<g class="pm-prop pm-hearts">
+<g transform="translate(176 44) scale(1.3)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+<g transform="translate(36 64)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+</g>
+<g class="pm-prop pm-dots">
+<circle cx="96" cy="14" r="6"></circle>
+<circle cx="120" cy="14" r="6"></circle>
+<circle cx="144" cy="14" r="6"></circle>
+</g>
+</svg>
+</div>
+
+<h3 class="pr-card__title">Your watchlist</h3>
+<p class="pr-card__body" style="margin: 0;">Films you saved for a rainy evening. Pick one and Mochi brings the popcorn.</p>
+<a class="pr-btn pr-btn--brand pr-btn--sm" href="ratings.html">Open watchlist</a>
+</aside>
+</section>
+</main>
+<footer style="border-top: var(--border-edge) solid var(--edge); background: var(--surface-100);">
+<div style="max-width: 1200px; margin: 0 auto; padding: 28px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 24px;">
+
+<div style="display: inline-block; line-height: 0; color: var(--text-primary); font-family: var(--font-body);">
+<svg aria-label="Mochi swishing his tail" class="pm pm--tail" height="64" role="img" viewbox="0 0 240 240" width="64">
+<ellipse class="pm-ground" cx="120" cy="227" rx="62" ry="7"></ellipse>
+<g class="pm-prop pm-night">
+<path class="pm-moon" d="M204 16 a22 22 0 1 0 24 30 a17 17 0 1 1 -24 -30z"></path>
+<circle class="pm-twinkle" cx="30" cy="34" r="3"></circle>
+<circle class="pm-twinkle" cx="54" cy="76" r="2.5"></circle>
+<circle class="pm-twinkle" cx="214" cy="96" r="2.5"></circle>
+</g>
+<g class="pm-cat">
+<g class="pm-tail">
+<path class="pm-tail-out" d="M158 206 C200 206 212 166 190 144"></path>
+<path class="pm-tail-in" d="M158 206 C200 206 212 166 190 144"></path>
+</g>
+<ellipse class="pm-fur pm-body" cx="120" cy="180" rx="54" ry="44"></ellipse>
+<path class="pm-stripe" d="M147 170 C153 177 154 185 151 193"></path>
+<path class="pm-stripe" d="M161 176 C167 183 168 191 165 199"></path>
+<ellipse class="pm-fur" cx="100" cy="221" rx="16" ry="9"></ellipse>
+<ellipse class="pm-fur pm-paw-r" cx="140" cy="221" rx="16" ry="9"></ellipse>
+<g class="pm-wave">
+<path class="pm-arm-out" d="M146 186 L196 132"></path>
+<path class="pm-arm-in" d="M146 186 L196 132"></path>
+<circle class="pm-fur" cx="196" cy="132" r="11"></circle>
+</g>
+<g class="pm-head">
+<g transform="translate(-5 -118) scale(0.88)">
+<path class="pm-fur pm-fur-head" d="M85.6 230.8 C77.6 190.8 80 169.2 92.8 166 C104 166 115.2 173.2 126.4 187.6 C139.2 183.6 152 184.4 164.8 190 C176 175.6 186.4 170 196 173.2 C205.6 179.6 205.6 200.4 196 235.6 C196 274 169.6 293.2 140.8 293.2 C109.6 293.2 83.2 269.2 85.6 230.8 Z"></path>
+<path class="pm-ear-in" d="M94 178 C96 174.667 102.333 178.667 113 190 L97 198 C92.333 190 91.333 183.333 94 178 Z"></path>
+<path class="pm-ear-in" d="M193 183 C191 179.667 186 182.667 178 192 L190 200 C194.667 194 195.667 188.333 193 183 Z"></path>
+<g class="pm-eyes-open">
+<g class="pm-pupils">
+<circle class="pm-eye" cx="120.4" cy="240" r="8.5"></circle>
+<circle class="pm-eye" cx="161.2" cy="240" r="8.5"></circle>
+<circle class="pm-shine" cx="123.4" cy="236.6" r="2.6"></circle>
+<circle class="pm-shine" cx="164.2" cy="236.6" r="2.6"></circle>
+</g>
+</g>
+<g class="pm-eyes-closed">
+<path class="pm-lid" d="M109.6 238 C116.8 244.4 124 244.4 131.2 238"></path>
+<path class="pm-lid" d="M150.4 238 C157.6 244.4 164.8 244.4 172 238"></path>
+</g>
+<path class="pm-nose" d="M134.8 254.8 C138.8 252.4 142.8 252.4 146.8 254.8 C145.2 259.6 143.2 262.4 140.8 263.2 C138.4 262.4 136.4 259.6 134.8 254.8 Z"></path>
+<ellipse class="pm-blush" cx="105.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<ellipse class="pm-blush" cx="176.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+<path class="pm-prop pm-tear" d="M114 252 C114 252 107 262 107 266 a7 7 0 0 0 14 0 C121 262 114 252 114 252 Z"></path>
+</g>
+</g>
+<g class="pm-prop pm-popcorn">
+<g class="pm-pops">
+<circle class="pm-kernel pm-pop" cx="112" cy="162" r="6"></circle>
+<circle class="pm-kernel pm-pop" cx="130" cy="160" r="6"></circle>
+</g>
+<circle class="pm-kernel" cx="104" cy="176" r="9"></circle>
+<circle class="pm-kernel" cx="120" cy="171" r="10"></circle>
+<circle class="pm-kernel" cx="136" cy="176" r="9"></circle>
+<path class="pm-bucket" d="M92 180 L148 180 L141 232 L99 232 Z"></path>
+<path class="pm-bucket-stripe" d="M107 182 L110 230 M133 182 L130 230"></path>
+</g>
+</g>
+<text class="pm-prop pm-q" x="186" y="76">?</text>
+<g class="pm-prop pm-zzz">
+<text class="pm-z" x="168" y="66">z</text>
+<text class="pm-z" x="184" y="46">z</text>
+<text class="pm-z" x="202" y="26">Z</text>
+</g>
+<g class="pm-prop pm-stars">
+<g transform="translate(22 40)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(186 26) scale(1.2)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+<g transform="translate(196 92) scale(0.8)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+</g>
+<g class="pm-prop pm-hearts">
+<g transform="translate(176 44) scale(1.3)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+<g transform="translate(36 64)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+</g>
+<g class="pm-prop pm-dots">
+<circle cx="96" cy="14" r="6"></circle>
+<circle cx="120" cy="14" r="6"></circle>
+<circle cx="144" cy="14" r="6"></circle>
+</g>
+</svg>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 2px; flex: 1 1 200px;">
+<span style="font: 600 22px/1 var(--font-display);">purrama</span>
+<span class="pt-meta">Cozy movie ratings for night owls.</span>
+</div>
+<nav aria-label="Footer" style="display: flex; flex-wrap: wrap; gap: 20px; font: 700 14px/1 var(--font-body);">
+<a class="pt-link" href="#">About</a><a class="pt-link" href="#">Help</a><a class="pt-link" href="#">Privacy</a><a class="pt-link" href="#">Terms</a>
+</nav>
+</div>
+</footer>
+</div>
+<script src="../js/purrama.js"></script>
+</body>
+</html>

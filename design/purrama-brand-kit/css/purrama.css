@@ -1,0 +1,329 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;700;800&display=swap");
+/* Purrama brand kit — everything in one stylesheet: fonts, tokens, components (pr-*) and Mochi the mascot (pm-*). */
+
+/* Purrama tokens — generated from tokens/purrama.tokens.json. Midnight is the default theme. */
+:root, [data-theme="midnight"] {
+  --surface-000: #0d1714;
+  --surface-100: #15231e;
+  --surface-200: #1d3029;
+  --edge: #050a08;
+  --hairline: #2a4038;
+  --text-primary: #ecf3ee;
+  --text-secondary: #9db3a8;
+  --brand: #1f6b4f;
+  --on-brand: #ffffff;
+  --brand-soft: #2e7d5b;
+  --accent: #e8b65a;
+  --on-accent: #0d1714;
+  --cream: #f3e9d2;
+  --blush: #e39a86;
+  --cat-ink: #0e2a20;
+  --star-off: #3a5047;
+  --focus: #e8b65a;
+  --danger: #ff8a7a;
+  --shadow-card: 6px 6px 0 #1f6b4f;
+  --shadow-hero: 8px 8px 0 #1f6b4f;
+  --shadow-control: 4px 4px 0 #050a08;
+  --shadow-pressed: 1px 1px 0 #050a08;
+}
+[data-theme="daylight"] {
+  --surface-000: #f6f1e6;
+  --surface-100: #fffcf5;
+  --surface-200: #ede5d3;
+  --edge: #0e2a20;
+  --hairline: #d9cfba;
+  --text-primary: #0e2a20;
+  --text-secondary: #4a5f55;
+  --star-off: #ffffff;
+  --focus: #1f6b4f;
+  --danger: #b3261e;
+  --shadow-control: 4px 4px 0 #0e2a20;
+  --shadow-pressed: 1px 1px 0 #0e2a20;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+  --border-edge: 2.5px;
+  --border-hair: 1.5px;
+  --font-display: Fredoka, "Nunito", system-ui, sans-serif;
+  --font-body: Nunito, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+/* Text styles */
+.display-xl { font-family: var(--font-display); font-size: 64px; line-height: 1.0; font-weight: 600; }
+.display-l { font-family: var(--font-display); font-size: 48px; line-height: 1.05; font-weight: 600; }
+.title { font-family: var(--font-display); font-size: 32px; line-height: 1.15; font-weight: 600; }
+.heading { font-family: var(--font-display); font-size: 24px; line-height: 1.2; font-weight: 600; }
+.card-title { font-family: var(--font-display); font-size: 20px; line-height: 1.25; font-weight: 600; }
+.body-lg { font-family: var(--font-body); font-size: 17px; line-height: 1.65; font-weight: 400; }
+.body { font-family: var(--font-body); font-size: 15px; line-height: 1.6; font-weight: 400; }
+.label { font-family: var(--font-body); font-size: 15px; line-height: 1.2; font-weight: 700; }
+.meta { font-family: var(--font-body); font-size: 14px; line-height: 1.4; font-weight: 600; }
+.chip { font-family: var(--font-body); font-size: 13px; line-height: 1.2; font-weight: 700; }
+
+
+/* Purrama — component styles. Every value comes from tokens.css. Prefix: pr- */
+
+.pr-root {
+  background: var(--surface-000);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ---------- Button ---------- */
+.pr-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: 48px; padding: 0 var(--space-5);
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-pill);
+  font: 700 15px/1.2 var(--font-body);
+  cursor: pointer; text-decoration: none;
+  box-shadow: var(--shadow-control);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+.pr-btn:hover { transform: translate(-1px, -1px); }
+.pr-btn:active { transform: translate(3px, 3px); box-shadow: var(--shadow-pressed); }
+.pr-btn:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.pr-btn:disabled { cursor: not-allowed; opacity: 0.5; transform: none; box-shadow: none; }
+.pr-btn--primary { background: var(--accent); color: var(--on-accent); }
+.pr-btn--brand { background: var(--brand); color: var(--on-brand); }
+.pr-btn--brand:hover { background: var(--brand-soft); }
+.pr-btn--quiet { background: var(--surface-100); color: var(--text-primary); }
+.pr-btn--sm { min-height: 40px; padding: 0 var(--space-4); font-size: 14px; }
+.pr-btn--icon { width: 48px; padding: 0; }
+.pr-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+/* ---------- Chip ---------- */
+.pr-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  min-height: 30px; padding: 0 var(--space-3);
+  border: 2px solid var(--edge); border-radius: var(--radius-pill);
+  background: var(--surface-200); color: var(--text-primary);
+  font: 700 13px/1.2 var(--font-body);
+}
+button.pr-chip { cursor: pointer; min-height: 36px; }
+button.pr-chip:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pr-chip--accent { background: var(--accent); color: var(--on-accent); }
+.pr-chip--selected, .pr-chip[aria-pressed="true"] { background: var(--brand-soft); color: var(--on-brand); }
+
+/* ---------- Search field ---------- */
+.pr-search {
+  position: relative; display: inline-flex; align-items: center; width: 100%; max-width: 360px;
+}
+.pr-search svg { position: absolute; left: 16px; width: 18px; height: 18px; color: var(--text-secondary); pointer-events: none; }
+.pr-search input {
+  width: 100%; height: 46px; box-sizing: border-box; padding: 0 var(--space-4) 0 44px;
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-pill);
+  background: var(--surface-000); color: var(--text-primary);
+  font: 600 14px/1 var(--font-body);
+}
+.pr-search input::placeholder { color: var(--text-secondary); }
+.pr-search input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pr-search input[aria-invalid="true"] { border-color: var(--danger); }
+
+/* ---------- Card ---------- */
+.pr-card {
+  background: var(--surface-100); color: var(--text-primary);
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-5);
+}
+.pr-card--hero { border-radius: var(--radius-xl); box-shadow: var(--shadow-hero); padding: 0; overflow: hidden; }
+.pr-card__title { margin: 0; font: 600 24px/1.2 var(--font-display); }
+.pr-card__body { margin: var(--space-3) 0 0; font: 400 15px/1.6 var(--font-body); color: var(--text-secondary); }
+
+/* ---------- Poster ---------- */
+.pr-poster {
+  position: relative; display: block; aspect-ratio: 2 / 3; width: 170px; box-sizing: border-box;
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-lg);
+  background: var(--surface-200); box-shadow: var(--shadow-control);
+  overflow: hidden; object-fit: cover;
+}
+.pr-poster--sm { width: 48px; border-radius: var(--radius-md); border-width: 2px; box-shadow: none; }
+.pr-poster--brand { background: var(--brand); }
+.pr-poster--accent { background: var(--accent); }
+
+/* ---------- Rating stars ---------- */
+.pr-stars { display: inline-flex; align-items: center; gap: var(--space-1); }
+.pr-stars svg { width: 26px; height: 26px; }
+.pr-stars--sm svg { width: 20px; height: 20px; }
+.pr-stars path { fill: var(--star-off); stroke: var(--edge); stroke-width: 1.6; stroke-linejoin: round; }
+.pr-stars .is-on path { fill: var(--accent); }
+.pr-stars button { display: inline-flex; padding: 2px; border: 0; background: none; cursor: pointer; border-radius: var(--radius-sm); }
+.pr-stars button:focus-visible { outline: 3px solid var(--focus); outline-offset: 1px; }
+
+/* ---------- Film row ---------- */
+.pr-film-row {
+  display: flex; align-items: center; gap: var(--space-4);
+  padding: var(--space-3) var(--space-5) var(--space-3) var(--space-3);
+  background: var(--surface-100); color: var(--text-primary);
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.pr-film-row__text { display: flex; flex-direction: column; gap: 2px; flex: 1 1 auto; min-width: 0; }
+.pr-film-row__title { font: 600 20px/1.25 var(--font-display); }
+.pr-film-row__meta { font: 600 14px/1.4 var(--font-body); color: var(--text-secondary); }
+
+/* ---------- App bar ---------- */
+.pr-appbar {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--surface-100); color: var(--text-primary);
+  border-bottom: var(--border-edge) solid var(--edge);
+}
+.pr-appbar__brand { display: inline-flex; align-items: center; gap: var(--space-3); text-decoration: none; color: inherit; }
+.pr-appbar__logo { width: 40px; height: 40px; display: block; }
+.pr-appbar__wordmark { font: 600 24px/1 var(--font-display); }
+.pr-appbar__nav { display: flex; gap: var(--space-2); }
+.pr-appbar__nav a {
+  padding: var(--space-2) var(--space-3); border-radius: var(--radius-pill);
+  color: var(--text-secondary); font: 700 14px/1 var(--font-body); text-decoration: none;
+}
+.pr-appbar__nav a:hover { color: var(--text-primary); }
+.pr-appbar__nav a[aria-current="page"] { color: var(--text-primary); background: var(--surface-200); }
+.pr-appbar__nav a:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pr-appbar .pr-search { margin-left: auto; max-width: 300px; }
+
+/* ---------- Mascot: Mochi ----------
+   One inline SVG rig (see components/Mascot/README.md); the animation is chosen by ONE class on the <svg>:
+   pm--idle pm--blink pm--sleep pm--tail pm--wave pm--curious pm--hop pm--rated pm--love
+   pm--look pm--loading pm--peek pm--sad pm--popcorn pm--night */
+.pm { display: block; overflow: hidden; }
+.pm * { transform-box: fill-box; }
+.pm-fur { fill: var(--cream); stroke: var(--brand); stroke-width: 6; stroke-linejoin: round; }
+.pm-ground { fill: var(--brand); opacity: 0.45; transform-origin: 50% 50%; }
+.pm-tail-out, .pm-arm-out { fill: none; stroke: var(--brand); stroke-width: 24; stroke-linecap: round; }
+.pm-tail-in, .pm-arm-in { fill: none; stroke: var(--cream); stroke-width: 13; stroke-linecap: round; }
+.pm-stripe { fill: none; stroke: var(--brand-soft); stroke-width: 6; stroke-linecap: round; }
+.pm-ear-in { fill: var(--brand-soft); }
+.pm-eye { fill: var(--cat-ink); }
+.pm-shine { fill: var(--cream); }
+.pm-lid { fill: none; stroke: var(--cat-ink); stroke-width: 5.5; stroke-linecap: round; }
+.pm-nose { fill: var(--blush); }
+.pm-blush { fill: var(--blush); opacity: 0.5; }
+.pm-tear { fill: var(--text-secondary); }
+.pm-z { font-family: var(--font-display); font-weight: 600; fill: var(--text-primary); font-size: 16px; }
+.pm-z:nth-child(2) { font-size: 21px; }
+.pm-z:nth-child(3) { font-size: 27px; }
+.pm-fur-head { stroke-width: 7; }
+.pm-star { fill: var(--accent); stroke: var(--edge); stroke-width: 1.6; stroke-linejoin: round; transform-origin: 50% 50%; }
+.pm-heart { fill: var(--blush); stroke: var(--brand); stroke-width: 1.8; stroke-linejoin: round; transform-origin: 50% 50%; }
+.pm-q { font-family: var(--font-display); font-weight: 600; font-size: 46px; fill: var(--accent); transform-origin: 50% 50%; }
+.pm-dots circle { fill: var(--accent); }
+.pm-bucket { fill: var(--cream); stroke: var(--brand); stroke-width: 5; stroke-linejoin: round; }
+.pm-bucket-stripe { fill: none; stroke: var(--brand-soft); stroke-width: 6; }
+.pm-kernel { fill: var(--cream); stroke: var(--brand); stroke-width: 3.5; }
+.pm-moon { fill: var(--accent); transform-origin: 50% 50%; }
+.pm-twinkle { fill: var(--cream); }
+
+.pm-prop, .pm-eyes-closed, .pm-wave { opacity: 0; }
+.pm-cat, .pm-body, .pm-head { transform-origin: 50% 100%; }
+.pm-tail, .pm-wave { transform-origin: 0% 100%; }
+.pm-eyes-open { transform-origin: 50% 50%; }
+
+/* base life: every pose breathes and blinks */
+.pm .pm-body { animation: pm-breathe 3.2s ease-in-out infinite; }
+.pm .pm-eyes-open { animation: pm-blink 4.6s linear infinite; }
+
+/* 1 idle */
+.pm--idle .pm-head { animation: pm-bob 3.2s ease-in-out infinite; }
+/* 2 blink */
+.pm--blink .pm-eyes-open { animation: pm-blink-fast 2.4s linear infinite; }
+/* 3 sleep */
+.pm--sleep .pm-eyes-open { opacity: 0; animation: none; }
+.pm--sleep .pm-eyes-closed { opacity: 1; }
+.pm--sleep .pm-body { animation-duration: 4.4s; }
+.pm--sleep .pm-head { animation: pm-doze 4.4s ease-in-out infinite; }
+.pm--sleep .pm-zzz { opacity: 1; }
+.pm--sleep .pm-z { opacity: 0; animation: pm-float 3.3s ease-out infinite; }
+.pm--sleep .pm-z:nth-child(2) { animation-delay: 1.1s; }
+.pm--sleep .pm-z:nth-child(3) { animation-delay: 2.2s; }
+/* 4 tail swish */
+.pm--tail .pm-tail { animation: pm-swish 1.4s ease-in-out infinite; }
+/* 5 wave hello */
+.pm--wave .pm-paw-r { opacity: 0; }
+.pm--wave .pm-wave { opacity: 1; animation: pm-wave 0.7s ease-in-out infinite; }
+.pm--wave .pm-head { animation: pm-lean 1.4s ease-in-out infinite; }
+/* 6 curious */
+.pm--curious .pm-head { animation: pm-tilt 2.8s ease-in-out infinite; }
+.pm--curious .pm-q { opacity: 1; animation: pm-wobble 1.6s ease-in-out infinite; }
+/* 7 happy hop */
+.pm--hop .pm-cat { animation: pm-hop 0.9s ease-in-out infinite; }
+.pm--hop .pm-ground { animation: pm-shadow 0.9s ease-in-out infinite; }
+/* 8 rated: star burst */
+.pm--rated .pm-stars { opacity: 1; }
+.pm--rated .pm-star { animation: pm-pop 2.2s ease-out infinite; }
+.pm--rated .pm-stars g:nth-child(2) .pm-star { animation-delay: 0.25s; }
+.pm--rated .pm-stars g:nth-child(3) .pm-star { animation-delay: 0.5s; }
+.pm--rated .pm-head { animation: pm-bob 1.1s ease-in-out infinite; }
+/* 9 love */
+.pm--love .pm-hearts { opacity: 1; }
+.pm--love .pm-heart { opacity: 0; animation: pm-float 2.6s ease-out infinite; }
+.pm--love .pm-hearts g:nth-child(2) .pm-heart { animation-delay: 1.3s; }
+.pm--love .pm-blush { opacity: 0.95; }
+/* 10 look around */
+.pm--look .pm-pupils { animation: pm-look 3.2s ease-in-out infinite; }
+/* 11 loading */
+.pm--loading .pm-dots { opacity: 1; }
+.pm--loading .pm-dots circle { animation: pm-dot 1s ease-in-out infinite; transform-origin: 50% 50%; }
+.pm--loading .pm-dots circle:nth-child(2) { animation-delay: 0.15s; }
+.pm--loading .pm-dots circle:nth-child(3) { animation-delay: 0.3s; }
+.pm--loading .pm-tail { animation: pm-swish 2.2s ease-in-out infinite; }
+/* 12 peek-a-boo */
+.pm--peek .pm-ground { opacity: 0; }
+.pm--peek .pm-cat { animation: pm-peek 3.6s ease-in-out infinite; }
+/* 13 sad */
+.pm--sad .pm-head { animation: pm-droop 3s ease-in-out infinite; }
+.pm--sad .pm-tear { opacity: 1; animation: pm-tear 2.2s ease-in infinite; }
+/* 14 popcorn */
+.pm--popcorn .pm-popcorn { opacity: 1; }
+.pm--popcorn .pm-head { animation: pm-munch 0.8s ease-in-out infinite; }
+.pm--popcorn .pm-pop { animation: pm-kernel 1.6s ease-out infinite; opacity: 0; }
+.pm--popcorn .pm-pops .pm-pop:nth-child(2) { animation-delay: 0.8s; }
+/* 15 stargazing */
+.pm--night .pm-night { opacity: 1; }
+.pm--night .pm-moon { animation: pm-glow 3s ease-in-out infinite; }
+.pm--night .pm-twinkle { animation: pm-twinkle 2s ease-in-out infinite; }
+.pm--night .pm-twinkle:nth-child(3) { animation-delay: 0.7s; }
+.pm--night .pm-twinkle:nth-child(4) { animation-delay: 1.4s; }
+.pm--night .pm-head { animation: pm-gaze 4s ease-in-out infinite; }
+
+@keyframes pm-breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.025, 1.045); } }
+@keyframes pm-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
+@keyframes pm-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes pm-blink-fast { 0%, 30%, 40%, 50%, 100% { transform: scaleY(1); } 35%, 45% { transform: scaleY(0.1); } }
+@keyframes pm-doze { 0%, 100% { transform: rotate(5deg) translateY(3px); } 50% { transform: rotate(7deg) translateY(5px); } }
+@keyframes pm-swish { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(14deg); } }
+@keyframes pm-wave { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(16deg); } }
+@keyframes pm-lean { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(-6deg); } }
+@keyframes pm-tilt { 0%, 100% { transform: rotate(0deg); } 30%, 70% { transform: rotate(-12deg); } }
+@keyframes pm-wobble { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-6px) rotate(6deg); } }
+@keyframes pm-hop { 0%, 100% { transform: translateY(0) scale(1.04, 0.96); } 45% { transform: translateY(-26px) scale(0.97, 1.04); } 75% { transform: translateY(0) scale(1.06, 0.93); } }
+@keyframes pm-shadow { 0%, 100% { transform: scale(1); } 45% { transform: scale(0.7); opacity: 0.25; } }
+@keyframes pm-pop { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 20% { transform: scale(1.25) rotate(10deg); opacity: 1; } 35%, 75% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(0.6); opacity: 0; } }
+@keyframes pm-float { 0% { transform: translateY(10px) scale(0.6); opacity: 0; } 25% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-26px) scale(1.05); opacity: 0; } }
+@keyframes pm-look { 0%, 15%, 100% { transform: translateX(0); } 30%, 45% { transform: translateX(-6px); } 60%, 80% { transform: translateX(6px); } }
+@keyframes pm-dot { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-9px); } }
+@keyframes pm-peek { 0%, 8%, 100% { transform: translateY(105%); } 35%, 72% { transform: translateY(42%); } }
+@keyframes pm-droop { 0%, 100% { transform: rotate(9deg) translateY(4px); } 50% { transform: rotate(11deg) translateY(6px); } }
+@keyframes pm-tear { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(24px); opacity: 0; } }
+@keyframes pm-munch { 0%, 50%, 100% { transform: translateY(0); } 25%, 75% { transform: translateY(3px); } }
+@keyframes pm-kernel { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 55% { transform: translateY(-36px); opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+@keyframes pm-glow { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes pm-twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+@keyframes pm-gaze { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(-5deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pm, .pm * { animation: none !important; }
+}

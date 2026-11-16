@@ -1,0 +1,17 @@
+/* Helpers used only by the page templates (prefix pt-). Load after purrama.css. */
+.pt-field { display: flex; flex-direction: column; gap: 8px; }
+.pt-field label { font: 700 14px/1.2 var(--font-body); color: var(--text-primary); }
+.pt-field input, .pt-field textarea {
+  box-sizing: border-box; width: 100%; min-height: 48px; padding: 12px 16px;
+  border: var(--border-edge) solid var(--edge); border-radius: var(--radius-md);
+  background: var(--surface-000); color: var(--text-primary); font: 600 15px/1.4 var(--font-body);
+}
+.pt-field input::placeholder, .pt-field textarea::placeholder { color: var(--text-secondary); }
+.pt-field input:focus-visible, .pt-field textarea:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.pt-link { color: var(--accent); font-weight: 700; }
+[data-theme="daylight"] .pt-link { color: var(--brand); }
+.pt-h2 { margin: 0; font: 600 32px/1.15 var(--font-display); }
+.pt-meta { font: 600 14px/1.4 var(--font-body); color: var(--text-secondary); }
+.pt-tile { display: flex; flex-direction: column; gap: 10px; text-decoration: none; color: inherit; }
+.pt-tile .pr-poster { width: 100%; }
+.pt-tile-title { font: 600 18px/1.25 var(--font-display); }

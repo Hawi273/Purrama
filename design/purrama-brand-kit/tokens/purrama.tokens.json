@@ -1,0 +1,98 @@
+{
+  "name": "Purrama",
+  "version": 1,
+  "color": {
+    "themes": [
+      {"id": "midnight", "name": "Midnight"},
+      {"id": "daylight", "name": "Daylight"}
+    ],
+    "tokens": [
+      {"name": "surface-000", "value": {"midnight": "#0d1714", "daylight": "#f6f1e6"}, "usage": "Page background. Midnight is the default theme; Daylight is the light alternative."},
+      {"name": "surface-100", "value": {"midnight": "#15231e", "daylight": "#fffcf5"}, "usage": "Cards, panels, app bar, list rows: anything that sits on the page and carries an edge and hard shadow."},
+      {"name": "surface-200", "value": {"midnight": "#1d3029", "daylight": "#ede5d3"}, "usage": "Insets inside a card: poster placeholders, chips, input wells."},
+      {"name": "edge", "value": {"midnight": "#050a08", "daylight": "#0e2a20"}, "usage": "The 2.5px outline on every card, button, chip and input. In Midnight it reads as a soft dark rim; in Daylight it is the crisp ink line from the logo."},
+      {"name": "hairline", "value": {"midnight": "#2a4038", "daylight": "#d9cfba"}, "usage": "Dividers inside a card (between list rows, under the app bar). Never an outline for a component."},
+      {"name": "text-primary", "value": {"midnight": "#ecf3ee", "daylight": "#0e2a20"}, "usage": "Headlines and body text on surface-000/100/200."},
+      {"name": "text-secondary", "value": {"midnight": "#9db3a8", "daylight": "#4a5f55"}, "usage": "Meta lines (year, runtime, director), labels, captions. Passes 4.5:1 on every surface in both themes."},
+      {"name": "brand", "value": "#1f6b4f", "usage": "Bottle green, taken from the logo badge. Secondary buttons, poster tints, and the hard shadow under cards. Text on it: on-brand."},
+      {"name": "on-brand", "value": "#ffffff", "usage": "Text and icons on brand (6.2:1)."},
+      {"name": "brand-soft", "value": "#2e7d5b", "usage": "The logo's stripe green. Selected chip fill, active nav underline, hover tint on brand. Text on it: on-brand."},
+      {"name": "accent", "value": "#e8b65a", "usage": "Moon amber, taken from the logo. The one warm spark: primary button, filled rating stars, the current-year chip. Use it once or twice per screen."},
+      {"name": "on-accent", "value": "#0d1714", "usage": "Text and icons on accent (9.7:1)."},
+      {"name": "cream", "value": "#f3e9d2", "usage": "The cat's fur from the logo. Highlights and illustration only; on Midnight it can carry large display text."},
+      {"name": "blush", "value": "#e39a86", "usage": "The cat's cheeks. A tiny decorative accent (a 'new' dot, a heart on a favourite); never for text or for state."},
+      {"name": "cat-ink", "value": "#0e2a20", "usage": "The cat's eyes and lids, from the logo. Mascot only."},
+      {"name": "star-off", "value": {"midnight": "#3a5047", "daylight": "#ffffff"}, "usage": "Empty rating star fill. Stars always carry an edge-coloured stroke so they read at 3:1."},
+      {"name": "focus", "value": {"midnight": "#e8b65a", "daylight": "#1f6b4f"}, "usage": "3px focus ring, offset 3px, on every interactive element."},
+      {"name": "danger", "value": {"midnight": "#ff8a7a", "daylight": "#b3261e"}, "usage": "Error text and the outline of an invalid input. Only for errors."}
+    ]
+  },
+  "type": {
+    "fonts": [],
+    "families": {
+      "display": "Fredoka, \"Nunito\", system-ui, sans-serif",
+      "body": "Nunito, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    },
+    "groups": [
+      {
+        "name": "Display",
+        "family": "display",
+        "styles": [
+          {"name": "display-xl", "fontSize": "64px", "lineHeight": 1.0, "fontWeight": 600, "sample": "Midnight Cushion", "usage": "Marketing heroes and empty-state headlines. One per screen."},
+          {"name": "display-l", "fontSize": "48px", "lineHeight": 1.05, "fontWeight": 600, "sample": "Spirited Away", "usage": "Film title on the film page."},
+          {"name": "title", "fontSize": "32px", "lineHeight": 1.15, "fontWeight": 600, "sample": "Your ratings", "usage": "Page and section titles."},
+          {"name": "heading", "fontSize": "24px", "lineHeight": 1.2, "fontWeight": 600, "sample": "purrama", "usage": "Card headings and the wordmark in the app bar."},
+          {"name": "card-title", "fontSize": "20px", "lineHeight": 1.25, "fontWeight": 600, "sample": "Paddington 2", "usage": "Film titles in rows and tiles."}
+        ]
+      },
+      {
+        "name": "Text",
+        "family": "body",
+        "styles": [
+          {"name": "body-lg", "fontSize": "17px", "lineHeight": 1.65, "fontWeight": 400, "sample": "Rate what you watched and keep a quiet record of every night at the movies.", "usage": "Synopses and intro paragraphs."},
+          {"name": "body", "fontSize": "15px", "lineHeight": 1.6, "fontWeight": 400, "sample": "Directed by Hayao Miyazaki", "usage": "Default UI and reading text."},
+          {"name": "label", "fontSize": "15px", "lineHeight": 1.2, "fontWeight": 700, "sample": "Rate this film", "usage": "Buttons and inputs."},
+          {"name": "meta", "fontSize": "14px", "lineHeight": 1.4, "fontWeight": 600, "sample": "1979 · Ridley Scott", "usage": "Year, runtime, director lines, in text-secondary."},
+          {"name": "chip", "fontSize": "13px", "lineHeight": 1.2, "fontWeight": 700, "sample": "Animation", "usage": "Chips and small tags."}
+        ]
+      }
+    ]
+  },
+  "spacing": {
+    "tokens": [
+      {"name": "space-1", "value": "4px", "usage": "Icon-to-icon gaps (between rating stars)."},
+      {"name": "space-2", "value": "8px", "usage": "Chip gaps, label-to-field."},
+      {"name": "space-3", "value": "12px", "usage": "Stack gap inside a card's text block."},
+      {"name": "space-4", "value": "16px", "usage": "Gap between list rows and between buttons."},
+      {"name": "space-5", "value": "24px", "usage": "Card padding."},
+      {"name": "space-6", "value": "32px", "usage": "Gap between poster and details; between sections in a card."},
+      {"name": "space-7", "value": "48px", "usage": "Gap between page sections."},
+      {"name": "space-8", "value": "64px", "usage": "Page gutters on desktop."}
+    ]
+  },
+  "radius": {
+    "tokens": [
+      {"name": "radius-sm", "value": "10px", "usage": "Tiny thumbnails, tooltips."},
+      {"name": "radius-md", "value": "14px", "usage": "Row thumbnails, inputs that are not pills."},
+      {"name": "radius-lg", "value": "22px", "usage": "Cards, list rows, posters."},
+      {"name": "radius-xl", "value": "28px", "usage": "Hero cards and sheets."},
+      {"name": "radius-pill", "value": "999px", "usage": "Buttons, chips, search field."}
+    ]
+  },
+  "shadow": {
+    "note": "Purrama's signature: hard, unblurred offset shadows (from Cardboard Brutal) on round, cushioned shapes. Never blurred drop shadows.",
+    "tokens": [
+      {"name": "shadow-card", "value": "6px 6px 0 #1f6b4f", "usage": "Every card and list row: a bottle-green block offset down-right."},
+      {"name": "shadow-hero", "value": "8px 8px 0 #1f6b4f", "usage": "The one large card on a page (film header)."},
+      {"name": "shadow-control", "value": {"midnight": "4px 4px 0 #050a08", "daylight": "4px 4px 0 #0e2a20"}, "usage": "Buttons, posters and small raised things: an edge-coloured block."},
+      {"name": "shadow-pressed", "value": {"midnight": "1px 1px 0 #050a08", "daylight": "1px 1px 0 #0e2a20"}, "usage": "Pressed button: the shadow collapses as the button moves 3px down-right."}
+    ]
+  },
+  "borderWidth": {
+    "note": "Outline weights.",
+    "tokens": [
+      {"name": "border-edge", "value": "2.5px", "usage": "The outline on cards, buttons, chips, inputs, posters."},
+      {"name": "border-hair", "value": "1.5px", "usage": "Dividers inside a card."}
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "purrama",
+  "short_name": "purrama",
+  "description": "Cozy movie and TV discovery for night owls.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0D1714",
+  "theme_color": "#0D1714",
+  "icons": [
+    { "src": "assets/brand/purrama-logo.png", "sizes": "1024x1024", "type": "image/png" },
+    { "src": "assets/brand/purrama-logo.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
