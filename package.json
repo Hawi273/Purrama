@@ -5,7 +5,7 @@
   "description": "Cozy movie and TV discovery for night owls. Static site (GitHub Pages) + Cloudflare Worker proxy for TMDB.",
   "type": "module",
   "scripts": {
-    "dev:api": "wrangler dev --cwd worker --port 8787",
+    "dev:api": "wrangler dev --cwd worker --env dev --port 8787",
     "dev:site": "node scripts/serve.mjs",
     "typecheck": "tsc -p tsconfig.json",
     "lint": "eslint .",

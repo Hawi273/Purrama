@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const port = Number(process.env.PORT) || 8000;
+const LOCAL_API = 'http://127.0.0.1:8787'; // must match API_BASE for local hosts in config.js
 const types = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.svg': 'image/svg+xml', '.png': 'image/png', '.json': 'application/json', '.ico': 'image/x-icon',
@@ -24,5 +25,12 @@ http.createServer((req, res) => {
   if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, 'index.html');
   if (!fs.existsSync(file)) { res.writeHead(404); res.end('Not found'); return; }
   res.writeHead(200, { 'Content-Type': types[path.extname(file)] ?? 'application/octet-stream', 'Cache-Control': 'no-cache' });
+  if (file.endsWith('index.html')) {
+    // The committed CSP only allows the production Worker; locally the page
+    // talks to `npm run dev:api`, so allow that here (never in the repo file).
+    const html = fs.readFileSync(file, 'utf8').replace(/connect-src ([^;"]+)/, `connect-src $1 ${LOCAL_API}`);
+    res.end(html);
+    return;
+  }
   fs.createReadStream(file).pipe(res);
 }).listen(port, () => console.log(`Purrama site on http://localhost:${port}`));

@@ -55,7 +55,13 @@ npm install
    ```
 3. Open http://localhost:8000. `config.js` uses the local Worker automatically.
 
-If port 8787 is taken, run Wrangler on another port (`npx wrangler dev --cwd worker --port 8789`) and point `API_BASE` in `config.js` and `connect-src` in `index.html` at it while you test (don't commit that change).
+**Production stays production-only.** The committed files carry no local settings:
+
+- `index.html`'s CSP allows only the production Worker. `npm run dev:site` adds `http://127.0.0.1:8787` to it when serving pages locally.
+- `worker/wrangler.toml`'s top-level `[vars]` (what Cloudflare deploys) allow only `https://hawi273.github.io`. `npm run dev:api` runs the `[env.dev]` environment, which allows only `localhost:8000` and `127.0.0.1:8000` and is never deployed.
+- `test/production.test.js` fails if either picks up a local address.
+
+If port 8787 is taken, end the leftover `wrangler`/`workerd` processes, or temporarily change the port in `package.json`, `config.js` and `scripts/serve.mjs` (don't commit that change).
 
 ### Checks
 
