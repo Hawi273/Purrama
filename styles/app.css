@@ -320,6 +320,8 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .action-panel__cat { grid-row: span 1; }
 .action-panel__rate { display: grid; gap: 6px; }
 .action-panel__hint { font: 600 13px/1.4 var(--font-body); color: var(--text-secondary); }
+/* Touch targets: the kit asks for 44px; its star buttons are 30px. */
+@media (pointer: coarse) { .action-panel .pr-stars button { min-height: 44px; padding: 9px 5px; } .action-panel .pr-stars { gap: 0; } }
 .action-panel .actions { grid-column: 1 / -1; }
 @media (min-width: 1100px) {
   .action-panel { grid-template-columns: auto auto 1fr; }
@@ -448,6 +450,8 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .mochi { display: block; flex: none; }
 
 /* ---------- Toast ---------- */
+/* The region is a manual popover so it can sit above an open <dialog> (both live in the top layer). */
+.toast-region[popover] { margin: 0; padding: 0; border: 0; background: transparent; overflow: visible; top: auto; width: auto; height: auto; color: inherit; }
 .toast-region { position: fixed; z-index: 60; left: 16px; right: 16px; bottom: calc(var(--tabbar-h) + 16px + env(safe-area-inset-bottom)); display: flex; justify-content: center; pointer-events: none; }
 @media (min-width: 900px) { .toast-region { bottom: 24px; left: auto; right: 24px; } }
 .toast {

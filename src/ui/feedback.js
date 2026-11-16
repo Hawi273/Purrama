@@ -74,8 +74,13 @@ let toastTimer;
  */
 export function toast(message, options = {}) {
   if (!toastRegion) {
-    toastRegion = h('div', { class: 'toast-region', role: 'status', 'aria-live': 'polite' });
+    toastRegion = h('div', { class: 'toast-region', role: 'status', 'aria-live': 'polite', popover: 'manual' });
     document.body.appendChild(toastRegion);
+  }
+  // Re-show the popover so it is the newest top-layer item, above any open dialog.
+  if (typeof toastRegion.showPopover === 'function') {
+    if (toastRegion.matches(':popover-open')) toastRegion.hidePopover();
+    toastRegion.showPopover();
   }
   clearTimeout(toastTimer);
   const close = () => toastRegion?.replaceChildren();
