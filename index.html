@@ -1,43 +1,112 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="midnight">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' https://image.tmdb.org; connect-src https://purrama-api.syzmon-hawajski.workers.dev http://localhost:8787; base-uri 'none'; form-action 'none'">
+        content="default-src 'none'; script-src 'self' 'sha256-A5weghSLAGfpN240j+kgor9JGs/Ub4MTOGmf7bDGxQc='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://image.tmdb.org; connect-src https://purrama-api.syzmon-hawajski.workers.dev http://127.0.0.1:8787; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Purrama</title>
-  <!-- Bump ?v= here and in app.js on every release, so browsers never mix a
-       new page with JS or CSS cached from the previous one (Pages caches 10 min). -->
-  <link rel="stylesheet" href="styles.css?v=2">
-  <script type="module" src="app.js?v=2"></script>
+  <title>purrama · Cozy movie and TV discovery for night owls</title>
+  <meta name="description" content="Find something to watch tonight. Browse films and series, keep a watchlist, rate what you saw. Movie and TV data from TMDB.">
+  <meta name="theme-color" content="#0D1714">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="purrama">
+  <meta property="og:title" content="purrama · Cozy movie and TV discovery">
+  <meta property="og:description" content="Find something to watch tonight. Browse films and series, keep a watchlist, rate what you saw.">
+  <meta property="og:image" content="https://hawi273.github.io/Purrama/assets/brand/purrama-logo.png">
+  <link rel="icon" href="assets/brand/purrama-logo.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/brand/purrama-logo.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="preconnect" href="https://image.tmdb.org">
+  <!-- Versions below are written by `npm run release` (scripts/release.mjs); don't edit them by hand. -->
+  <!-- importmap:start -->
+  <script type="importmap">
+    {
+      "imports": {
+        "./config.js": "./config.js?v=993435c3f2",
+        "./src/api/client.js": "./src/api/client.js?v=993435c3f2",
+        "./src/api/images.js": "./src/api/images.js?v=993435c3f2",
+        "./src/api/tmdb.js": "./src/api/tmdb.js?v=993435c3f2",
+        "./src/api/types.js": "./src/api/types.js?v=993435c3f2",
+        "./src/main.js": "./src/main.js?v=993435c3f2",
+        "./src/pages/browse.js": "./src/pages/browse.js?v=993435c3f2",
+        "./src/pages/common.js": "./src/pages/common.js?v=993435c3f2",
+        "./src/pages/discover.js": "./src/pages/discover.js?v=993435c3f2",
+        "./src/pages/home.js": "./src/pages/home.js?v=993435c3f2",
+        "./src/pages/library.js": "./src/pages/library.js?v=993435c3f2",
+        "./src/pages/not-found.js": "./src/pages/not-found.js?v=993435c3f2",
+        "./src/pages/person.js": "./src/pages/person.js?v=993435c3f2",
+        "./src/pages/search.js": "./src/pages/search.js?v=993435c3f2",
+        "./src/pages/title.js": "./src/pages/title.js?v=993435c3f2",
+        "./src/router.js": "./src/router.js?v=993435c3f2",
+        "./src/state/library.js": "./src/state/library.js?v=993435c3f2",
+        "./src/ui/components.js": "./src/ui/components.js?v=993435c3f2",
+        "./src/ui/dom.js": "./src/ui/dom.js?v=993435c3f2",
+        "./src/ui/feedback.js": "./src/ui/feedback.js?v=993435c3f2",
+        "./src/ui/header-search.js": "./src/ui/header-search.js?v=993435c3f2",
+        "./src/ui/icons.js": "./src/ui/icons.js?v=993435c3f2",
+        "./src/ui/lifecycle.js": "./src/ui/lifecycle.js?v=993435c3f2",
+        "./src/ui/mochi.js": "./src/ui/mochi.js?v=993435c3f2",
+        "./src/ui/rail.js": "./src/ui/rail.js?v=993435c3f2"
+      }
+    }
+  </script>
+  <!-- importmap:end -->
+  <link rel="stylesheet" href="styles/purrama.css?v=993435c3f2">
+  <link rel="stylesheet" href="styles/app.css?v=993435c3f2">
+  <script type="module" src="src/main.js?v=993435c3f2"></script>
 </head>
-<body>
-  <header class="top">
-    <h1 class="brand">Purrama</h1>
-    <form id="search" class="search" role="search">
-      <label for="q" class="visually-hidden">Search movies</label>
-      <input id="q" type="search" placeholder="Search movies" autocomplete="off" maxlength="100" required>
-      <button type="submit">Search</button>
-    </form>
-    <nav class="tabs" aria-label="Views">
-      <button type="button" data-view="trending" aria-pressed="true">Trending</button>
-      <button type="button" data-view="mine" aria-pressed="false">My ratings</button>
-    </nav>
+<body class="pr-root">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="appbar">
+    <div class="appbar__inner">
+      <a class="pr-appbar__brand" href="#/" aria-label="purrama home">
+        <img class="pr-appbar__logo" src="assets/brand/purrama-logo.svg" alt="" width="40" height="40">
+        <span class="pr-appbar__wordmark">purrama</span>
+      </a>
+      <nav class="appbar__nav" aria-label="Main">
+        <a href="#/" data-nav="home">Home</a>
+        <a href="#/movies" data-nav="movies">Movies</a>
+        <a href="#/tv" data-nav="tv-shows">TV series</a>
+        <a href="#/discover" data-nav="discover">Discover</a>
+        <a href="#/library?tab=watchlist" data-nav="watchlist">Watchlist</a>
+        <a href="#/library?tab=favorites" data-nav="favorites">Favourites</a>
+      </nav>
+      <div class="appbar__search" id="header-search"></div>
+      <a class="pr-btn pr-btn--quiet pr-btn--icon appbar__mobile-discover" href="#/discover" aria-label="Discover"></a>
+    </div>
   </header>
 
-  <main>
-    <h2 id="heading">Trending this week</h2>
-    <p id="status" class="status" role="status" aria-live="polite"></p>
-    <ul id="grid" class="grid"></ul>
-  </main>
+  <main id="main" tabindex="-1"></main>
 
-  <footer class="foot">
-    <p>
-      Movie data and images from <a href="https://www.themoviedb.org/" rel="noopener">TMDB</a>.
-      This product uses the TMDB API but is not endorsed or certified by TMDB.
-    </p>
-    <p>Your ratings are stored only in this browser.</p>
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <img src="assets/brand/purrama-logo.svg" alt="" width="40" height="40">
+        <div>
+          <p class="footer__name">purrama</p>
+          <p class="footer__tag">Cozy movie and TV discovery for night owls.</p>
+        </div>
+      </div>
+      <div class="footer__tmdb">
+        <a class="footer__tmdb-logo" href="https://www.themoviedb.org/" rel="noopener" target="_blank">
+          <img src="assets/tmdb/tmdb-logo-short.svg" alt="The Movie Database (TMDB)" width="128" height="17">
+        </a>
+        <p class="footer__notice">This website uses TMDB and the TMDB APIs but is not endorsed, certified, or otherwise approved by TMDB.</p>
+        <p class="footer__note">Your watchlist, favourites and ratings are saved in this browser only.</p>
+      </div>
+    </div>
   </footer>
+
+  <nav class="tabbar" aria-label="Main">
+    <a href="#/" data-nav="home"><span class="tabbar__icon" data-icon="home"></span>Home</a>
+    <a href="#/movies" data-nav="movies"><span class="tabbar__icon" data-icon="film"></span>Movies</a>
+    <a href="#/tv" data-nav="tv-shows"><span class="tabbar__icon" data-icon="tv"></span>TV</a>
+    <a href="#/search" data-nav="search"><span class="tabbar__icon" data-icon="search"></span>Search</a>
+    <a href="#/library" data-nav="library"><span class="tabbar__icon" data-icon="library"></span>Library</a>
+  </nav>
+
+  <noscript><p class="noscript">purrama needs JavaScript to load films from TMDB.</p></noscript>
 </body>
 </html>

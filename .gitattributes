@@ -1,0 +1,7 @@
+# Keep LF everywhere: index.html carries a CSP sha256 of its inline import map,
+# which must match byte for byte on every checkout and on GitHub Pages.
+* text=auto eol=lf
+*.png binary
+*.zip binary
+*.figcraft binary
+*.vectorcraft binary

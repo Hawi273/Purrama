@@ -1,0 +1,299 @@
+{
+  "color": {
+    "surface-000": {
+      "$type": "color",
+      "$value": "#0d1714",
+      "$description": "Page background. Midnight is the default theme; Daylight is the light alternative."
+    },
+    "surface-100": {
+      "$type": "color",
+      "$value": "#15231e",
+      "$description": "Cards, panels, app bar, list rows: anything that sits on the page and carries an edge and hard shadow."
+    },
+    "surface-200": {
+      "$type": "color",
+      "$value": "#1d3029",
+      "$description": "Insets inside a card: poster placeholders, chips, input wells."
+    },
+    "edge": {
+      "$type": "color",
+      "$value": "#050a08",
+      "$description": "The 2.5px outline on every card, button, chip and input. In Midnight it reads as a soft dark rim; in Daylight it is the crisp ink line from the logo."
+    },
+    "hairline": {
+      "$type": "color",
+      "$value": "#2a4038",
+      "$description": "Dividers inside a card (between list rows, under the app bar). Never an outline for a component."
+    },
+    "text-primary": {
+      "$type": "color",
+      "$value": "#ecf3ee",
+      "$description": "Headlines and body text on surface-000/100/200."
+    },
+    "text-secondary": {
+      "$type": "color",
+      "$value": "#9db3a8",
+      "$description": "Meta lines (year, runtime, director), labels, captions. Passes 4.5:1 on every surface in both themes."
+    },
+    "brand": {
+      "$type": "color",
+      "$value": "#1f6b4f",
+      "$description": "Bottle green, taken from the logo badge. Secondary buttons, poster tints, and the hard shadow under cards. Text on it: on-brand."
+    },
+    "on-brand": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Text and icons on brand (6.2:1)."
+    },
+    "brand-soft": {
+      "$type": "color",
+      "$value": "#2e7d5b",
+      "$description": "The logo's stripe green. Selected chip fill, active nav underline, hover tint on brand. Text on it: on-brand."
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "#e8b65a",
+      "$description": "Moon amber, taken from the logo. The one warm spark: primary button, filled rating stars, the current-year chip. Use it once or twice per screen."
+    },
+    "on-accent": {
+      "$type": "color",
+      "$value": "#0d1714",
+      "$description": "Text and icons on accent (9.7:1)."
+    },
+    "cream": {
+      "$type": "color",
+      "$value": "#f3e9d2",
+      "$description": "The cat's fur from the logo. Highlights and illustration only; on Midnight it can carry large display text."
+    },
+    "blush": {
+      "$type": "color",
+      "$value": "#e39a86",
+      "$description": "The cat's cheeks. A tiny decorative accent (a 'new' dot, a heart on a favourite); never for text or for state."
+    },
+    "cat-ink": {
+      "$type": "color",
+      "$value": "#0e2a20",
+      "$description": "The cat's eyes and lids, from the logo. Mascot only."
+    },
+    "star-off": {
+      "$type": "color",
+      "$value": "#3a5047",
+      "$description": "Empty rating star fill. Stars always carry an edge-coloured stroke so they read at 3:1."
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "#e8b65a",
+      "$description": "3px focus ring, offset 3px, on every interactive element."
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "#ff8a7a",
+      "$description": "Error text and the outline of an invalid input. Only for errors."
+    }
+  },
+  "color-daylight": {
+    "surface-000": {
+      "$type": "color",
+      "$value": "#f6f1e6",
+      "$description": "Page background. Midnight is the default theme; Daylight is the light alternative."
+    },
+    "surface-100": {
+      "$type": "color",
+      "$value": "#fffcf5",
+      "$description": "Cards, panels, app bar, list rows: anything that sits on the page and carries an edge and hard shadow."
+    },
+    "surface-200": {
+      "$type": "color",
+      "$value": "#ede5d3",
+      "$description": "Insets inside a card: poster placeholders, chips, input wells."
+    },
+    "edge": {
+      "$type": "color",
+      "$value": "#0e2a20",
+      "$description": "The 2.5px outline on every card, button, chip and input. In Midnight it reads as a soft dark rim; in Daylight it is the crisp ink line from the logo."
+    },
+    "hairline": {
+      "$type": "color",
+      "$value": "#d9cfba",
+      "$description": "Dividers inside a card (between list rows, under the app bar). Never an outline for a component."
+    },
+    "text-primary": {
+      "$type": "color",
+      "$value": "#0e2a20",
+      "$description": "Headlines and body text on surface-000/100/200."
+    },
+    "text-secondary": {
+      "$type": "color",
+      "$value": "#4a5f55",
+      "$description": "Meta lines (year, runtime, director), labels, captions. Passes 4.5:1 on every surface in both themes."
+    },
+    "brand": {
+      "$type": "color",
+      "$value": "#1f6b4f",
+      "$description": "Bottle green, taken from the logo badge. Secondary buttons, poster tints, and the hard shadow under cards. Text on it: on-brand."
+    },
+    "on-brand": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Text and icons on brand (6.2:1)."
+    },
+    "brand-soft": {
+      "$type": "color",
+      "$value": "#2e7d5b",
+      "$description": "The logo's stripe green. Selected chip fill, active nav underline, hover tint on brand. Text on it: on-brand."
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "#e8b65a",
+      "$description": "Moon amber, taken from the logo. The one warm spark: primary button, filled rating stars, the current-year chip. Use it once or twice per screen."
+    },
+    "on-accent": {
+      "$type": "color",
+      "$value": "#0d1714",
+      "$description": "Text and icons on accent (9.7:1)."
+    },
+    "cream": {
+      "$type": "color",
+      "$value": "#f3e9d2",
+      "$description": "The cat's fur from the logo. Highlights and illustration only; on Midnight it can carry large display text."
+    },
+    "blush": {
+      "$type": "color",
+      "$value": "#e39a86",
+      "$description": "The cat's cheeks. A tiny decorative accent (a 'new' dot, a heart on a favourite); never for text or for state."
+    },
+    "cat-ink": {
+      "$type": "color",
+      "$value": "#0e2a20",
+      "$description": "The cat's eyes and lids, from the logo. Mascot only."
+    },
+    "star-off": {
+      "$type": "color",
+      "$value": "#ffffff",
+      "$description": "Empty rating star fill. Stars always carry an edge-coloured stroke so they read at 3:1."
+    },
+    "focus": {
+      "$type": "color",
+      "$value": "#1f6b4f",
+      "$description": "3px focus ring, offset 3px, on every interactive element."
+    },
+    "danger": {
+      "$type": "color",
+      "$value": "#b3261e",
+      "$description": "Error text and the outline of an invalid input. Only for errors."
+    }
+  },
+  "spacing": {
+    "space-1": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Icon-to-icon gaps (between rating stars)."
+    },
+    "space-2": {
+      "$type": "dimension",
+      "$value": "8px",
+      "$description": "Chip gaps, label-to-field."
+    },
+    "space-3": {
+      "$type": "dimension",
+      "$value": "12px",
+      "$description": "Stack gap inside a card's text block."
+    },
+    "space-4": {
+      "$type": "dimension",
+      "$value": "16px",
+      "$description": "Gap between list rows and between buttons."
+    },
+    "space-5": {
+      "$type": "dimension",
+      "$value": "24px",
+      "$description": "Card padding."
+    },
+    "space-6": {
+      "$type": "dimension",
+      "$value": "32px",
+      "$description": "Gap between poster and details; between sections in a card."
+    },
+    "space-7": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "Gap between page sections."
+    },
+    "space-8": {
+      "$type": "dimension",
+      "$value": "64px",
+      "$description": "Page gutters on desktop."
+    }
+  },
+  "radius": {
+    "radius-sm": {
+      "$type": "dimension",
+      "$value": "10px",
+      "$description": "Tiny thumbnails, tooltips."
+    },
+    "radius-md": {
+      "$type": "dimension",
+      "$value": "14px",
+      "$description": "Row thumbnails, inputs that are not pills."
+    },
+    "radius-lg": {
+      "$type": "dimension",
+      "$value": "22px",
+      "$description": "Cards, list rows, posters."
+    },
+    "radius-xl": {
+      "$type": "dimension",
+      "$value": "28px",
+      "$description": "Hero cards and sheets."
+    },
+    "radius-pill": {
+      "$type": "dimension",
+      "$value": "999px",
+      "$description": "Buttons, chips, search field."
+    }
+  },
+  "border-width": {
+    "border-edge": {
+      "$type": "dimension",
+      "$value": "2.5px",
+      "$description": "The outline on cards, buttons, chips, inputs, posters."
+    },
+    "border-hair": {
+      "$type": "dimension",
+      "$value": "1.5px",
+      "$description": "Dividers inside a card."
+    }
+  },
+  "shadow": {
+    "shadow-card": {
+      "$type": "string",
+      "$value": "6px 6px 0 #1f6b4f",
+      "$description": "Every card and list row: a bottle-green block offset down-right."
+    },
+    "shadow-hero": {
+      "$type": "string",
+      "$value": "8px 8px 0 #1f6b4f",
+      "$description": "The one large card on a page (film header)."
+    },
+    "shadow-control": {
+      "$type": "string",
+      "$value": "4px 4px 0 #050a08",
+      "$description": "Buttons, posters and small raised things: an edge-coloured block."
+    },
+    "shadow-pressed": {
+      "$type": "string",
+      "$value": "1px 1px 0 #050a08",
+      "$description": "Pressed button: the shadow collapses as the button moves 3px down-right."
+    }
+  },
+  "font-family": {
+    "display": {
+      "$type": "fontFamily",
+      "$value": "Fredoka, \"Nunito\", system-ui, sans-serif"
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": "Nunito, system-ui, -apple-system, \"Segoe UI\", sans-serif"
+    }
+  }
+}

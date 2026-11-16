@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="pm pm--sad" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Mochi, the Purrama cat">
+  <style>.pm{--cream:#f3e9d2;--brand:#1f6b4f;--brand-soft:#2e7d5b;--blush:#e39a86;--cat-ink:#0e2a20;--accent:#e8b65a;--edge:#0e2a20;--text-primary:#e8b65a;--text-secondary:#7f9a8e;--font-display:Fredoka,Nunito,"Arial Rounded MT Bold",sans-serif;}
+.pm { display: block; overflow: hidden; }
+.pm * { transform-box: fill-box; }
+.pm-fur { fill: var(--cream); stroke: var(--brand); stroke-width: 6; stroke-linejoin: round; }
+.pm-ground { fill: var(--brand); opacity: 0.45; transform-origin: 50% 50%; }
+.pm-tail-out, .pm-arm-out { fill: none; stroke: var(--brand); stroke-width: 24; stroke-linecap: round; }
+.pm-tail-in, .pm-arm-in { fill: none; stroke: var(--cream); stroke-width: 13; stroke-linecap: round; }
+.pm-stripe { fill: none; stroke: var(--brand-soft); stroke-width: 6; stroke-linecap: round; }
+.pm-ear-in { fill: var(--brand-soft); }
+.pm-eye { fill: var(--cat-ink); }
+.pm-shine { fill: var(--cream); }
+.pm-lid { fill: none; stroke: var(--cat-ink); stroke-width: 5.5; stroke-linecap: round; }
+.pm-nose { fill: var(--blush); }
+.pm-blush { fill: var(--blush); opacity: 0.5; }
+.pm-tear { fill: var(--text-secondary); }
+.pm-z { font-family: var(--font-display); font-weight: 600; fill: var(--text-primary); font-size: 16px; }
+.pm-z:nth-child(2) { font-size: 21px; }
+.pm-z:nth-child(3) { font-size: 27px; }
+.pm-fur-head { stroke-width: 7; }
+.pm-star { fill: var(--accent); stroke: var(--edge); stroke-width: 1.6; stroke-linejoin: round; transform-origin: 50% 50%; }
+.pm-heart { fill: var(--blush); stroke: var(--brand); stroke-width: 1.8; stroke-linejoin: round; transform-origin: 50% 50%; }
+.pm-q { font-family: var(--font-display); font-weight: 600; font-size: 46px; fill: var(--accent); transform-origin: 50% 50%; }
+.pm-dots circle { fill: var(--accent); }
+.pm-bucket { fill: var(--cream); stroke: var(--brand); stroke-width: 5; stroke-linejoin: round; }
+.pm-bucket-stripe { fill: none; stroke: var(--brand-soft); stroke-width: 6; }
+.pm-kernel { fill: var(--cream); stroke: var(--brand); stroke-width: 3.5; }
+.pm-moon { fill: var(--accent); transform-origin: 50% 50%; }
+.pm-twinkle { fill: var(--cream); }
+
+.pm-prop, .pm-eyes-closed, .pm-wave { opacity: 0; }
+.pm-cat, .pm-body, .pm-head { transform-origin: 50% 100%; }
+.pm-tail, .pm-wave { transform-origin: 0% 100%; }
+.pm-eyes-open { transform-origin: 50% 50%; }
+
+/* base life: every pose breathes and blinks */
+.pm .pm-body { animation: pm-breathe 3.2s ease-in-out infinite; }
+.pm .pm-eyes-open { animation: pm-blink 4.6s linear infinite; }
+
+/* 1 idle */
+.pm--idle .pm-head { animation: pm-bob 3.2s ease-in-out infinite; }
+/* 2 blink */
+.pm--blink .pm-eyes-open { animation: pm-blink-fast 2.4s linear infinite; }
+/* 3 sleep */
+.pm--sleep .pm-eyes-open { opacity: 0; animation: none; }
+.pm--sleep .pm-eyes-closed { opacity: 1; }
+.pm--sleep .pm-body { animation-duration: 4.4s; }
+.pm--sleep .pm-head { animation: pm-doze 4.4s ease-in-out infinite; }
+.pm--sleep .pm-zzz { opacity: 1; }
+.pm--sleep .pm-z { opacity: 0; animation: pm-float 3.3s ease-out infinite; }
+.pm--sleep .pm-z:nth-child(2) { animation-delay: 1.1s; }
+.pm--sleep .pm-z:nth-child(3) { animation-delay: 2.2s; }
+/* 4 tail swish */
+.pm--tail .pm-tail { animation: pm-swish 1.4s ease-in-out infinite; }
+/* 5 wave hello */
+.pm--wave .pm-paw-r { opacity: 0; }
+.pm--wave .pm-wave { opacity: 1; animation: pm-wave 0.7s ease-in-out infinite; }
+.pm--wave .pm-head { animation: pm-lean 1.4s ease-in-out infinite; }
+/* 6 curious */
+.pm--curious .pm-head { animation: pm-tilt 2.8s ease-in-out infinite; }
+.pm--curious .pm-q { opacity: 1; animation: pm-wobble 1.6s ease-in-out infinite; }
+/* 7 happy hop */
+.pm--hop .pm-cat { animation: pm-hop 0.9s ease-in-out infinite; }
+.pm--hop .pm-ground { animation: pm-shadow 0.9s ease-in-out infinite; }
+/* 8 rated: star burst */
+.pm--rated .pm-stars { opacity: 1; }
+.pm--rated .pm-star { animation: pm-pop 2.2s ease-out infinite; }
+.pm--rated .pm-stars g:nth-child(2) .pm-star { animation-delay: 0.25s; }
+.pm--rated .pm-stars g:nth-child(3) .pm-star { animation-delay: 0.5s; }
+.pm--rated .pm-head { animation: pm-bob 1.1s ease-in-out infinite; }
+/* 9 love */
+.pm--love .pm-hearts { opacity: 1; }
+.pm--love .pm-heart { opacity: 0; animation: pm-float 2.6s ease-out infinite; }
+.pm--love .pm-hearts g:nth-child(2) .pm-heart { animation-delay: 1.3s; }
+.pm--love .pm-blush { opacity: 0.95; }
+/* 10 look around */
+.pm--look .pm-pupils { animation: pm-look 3.2s ease-in-out infinite; }
+/* 11 loading */
+.pm--loading .pm-dots { opacity: 1; }
+.pm--loading .pm-dots circle { animation: pm-dot 1s ease-in-out infinite; transform-origin: 50% 50%; }
+.pm--loading .pm-dots circle:nth-child(2) { animation-delay: 0.15s; }
+.pm--loading .pm-dots circle:nth-child(3) { animation-delay: 0.3s; }
+.pm--loading .pm-tail { animation: pm-swish 2.2s ease-in-out infinite; }
+/* 12 peek-a-boo */
+.pm--peek .pm-ground { opacity: 0; }
+.pm--peek .pm-cat { animation: pm-peek 3.6s ease-in-out infinite; }
+/* 13 sad */
+.pm--sad .pm-head { animation: pm-droop 3s ease-in-out infinite; }
+.pm--sad .pm-tear { opacity: 1; animation: pm-tear 2.2s ease-in infinite; }
+/* 14 popcorn */
+.pm--popcorn .pm-popcorn { opacity: 1; }
+.pm--popcorn .pm-head { animation: pm-munch 0.8s ease-in-out infinite; }
+.pm--popcorn .pm-pop { animation: pm-kernel 1.6s ease-out infinite; opacity: 0; }
+.pm--popcorn .pm-pops .pm-pop:nth-child(2) { animation-delay: 0.8s; }
+/* 15 stargazing */
+.pm--night .pm-night { opacity: 1; }
+.pm--night .pm-moon { animation: pm-glow 3s ease-in-out infinite; }
+.pm--night .pm-twinkle { animation: pm-twinkle 2s ease-in-out infinite; }
+.pm--night .pm-twinkle:nth-child(3) { animation-delay: 0.7s; }
+.pm--night .pm-twinkle:nth-child(4) { animation-delay: 1.4s; }
+.pm--night .pm-head { animation: pm-gaze 4s ease-in-out infinite; }
+
+@keyframes pm-breathe { 0%, 100% { transform: scale(1, 1); } 50% { transform: scale(1.025, 1.045); } }
+@keyframes pm-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(2.5px); } }
+@keyframes pm-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+@keyframes pm-blink-fast { 0%, 30%, 40%, 50%, 100% { transform: scaleY(1); } 35%, 45% { transform: scaleY(0.1); } }
+@keyframes pm-doze { 0%, 100% { transform: rotate(5deg) translateY(3px); } 50% { transform: rotate(7deg) translateY(5px); } }
+@keyframes pm-swish { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(14deg); } }
+@keyframes pm-wave { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(16deg); } }
+@keyframes pm-lean { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(-6deg); } }
+@keyframes pm-tilt { 0%, 100% { transform: rotate(0deg); } 30%, 70% { transform: rotate(-12deg); } }
+@keyframes pm-wobble { 0%, 100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-6px) rotate(6deg); } }
+@keyframes pm-hop { 0%, 100% { transform: translateY(0) scale(1.04, 0.96); } 45% { transform: translateY(-26px) scale(0.97, 1.04); } 75% { transform: translateY(0) scale(1.06, 0.93); } }
+@keyframes pm-shadow { 0%, 100% { transform: scale(1); } 45% { transform: scale(0.7); opacity: 0.25; } }
+@keyframes pm-pop { 0% { transform: scale(0) rotate(-40deg); opacity: 0; } 20% { transform: scale(1.25) rotate(10deg); opacity: 1; } 35%, 75% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(0.6); opacity: 0; } }
+@keyframes pm-float { 0% { transform: translateY(10px) scale(0.6); opacity: 0; } 25% { transform: translateY(0) scale(1); opacity: 1; } 100% { transform: translateY(-26px) scale(1.05); opacity: 0; } }
+@keyframes pm-look { 0%, 15%, 100% { transform: translateX(0); } 30%, 45% { transform: translateX(-6px); } 60%, 80% { transform: translateX(6px); } }
+@keyframes pm-dot { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-9px); } }
+@keyframes pm-peek { 0%, 8%, 100% { transform: translateY(105%); } 35%, 72% { transform: translateY(42%); } }
+@keyframes pm-droop { 0%, 100% { transform: rotate(9deg) translateY(4px); } 50% { transform: rotate(11deg) translateY(6px); } }
+@keyframes pm-tear { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: 1; } 100% { transform: translateY(24px); opacity: 0; } }
+@keyframes pm-munch { 0%, 50%, 100% { transform: translateY(0); } 25%, 75% { transform: translateY(3px); } }
+@keyframes pm-kernel { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 55% { transform: translateY(-36px); opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+@keyframes pm-glow { 0%, 100% { transform: scale(1); opacity: 0.85; } 50% { transform: scale(1.08); opacity: 1; } }
+@keyframes pm-twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+@keyframes pm-gaze { 0%, 100% { transform: rotate(-8deg); } 50% { transform: rotate(-5deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pm, .pm * { animation: none !important; }
+}
+</style>
+  <ellipse class="pm-ground" cx="120" cy="227" rx="62" ry="7"></ellipse>
+  <g class="pm-prop pm-night">
+    <path class="pm-moon" d="M204 16 a22 22 0 1 0 24 30 a17 17 0 1 1 -24 -30z"></path>
+    <circle class="pm-twinkle" cx="30" cy="34" r="3"></circle>
+    <circle class="pm-twinkle" cx="54" cy="76" r="2.5"></circle>
+    <circle class="pm-twinkle" cx="214" cy="96" r="2.5"></circle>
+  </g>
+  <g class="pm-cat">
+    <g class="pm-tail">
+      <path class="pm-tail-out" d="M158 206 C200 206 212 166 190 144"></path>
+      <path class="pm-tail-in" d="M158 206 C200 206 212 166 190 144"></path>
+    </g>
+    <ellipse class="pm-fur pm-body" cx="120" cy="180" rx="54" ry="44"></ellipse>
+    <path class="pm-stripe" d="M147 170 C153 177 154 185 151 193"></path>
+    <path class="pm-stripe" d="M161 176 C167 183 168 191 165 199"></path>
+    <ellipse class="pm-fur" cx="100" cy="221" rx="16" ry="9"></ellipse>
+    <ellipse class="pm-fur pm-paw-r" cx="140" cy="221" rx="16" ry="9"></ellipse>
+    <g class="pm-wave">
+      <path class="pm-arm-out" d="M146 186 L196 132"></path>
+      <path class="pm-arm-in" d="M146 186 L196 132"></path>
+      <circle class="pm-fur" cx="196" cy="132" r="11"></circle>
+    </g>
+    <g class="pm-head">
+      <g transform="translate(-5 -118) scale(0.88)">
+        <path class="pm-fur pm-fur-head" d="M85.6 230.8 C77.6 190.8 80 169.2 92.8 166 C104 166 115.2 173.2 126.4 187.6 C139.2 183.6 152 184.4 164.8 190 C176 175.6 186.4 170 196 173.2 C205.6 179.6 205.6 200.4 196 235.6 C196 274 169.6 293.2 140.8 293.2 C109.6 293.2 83.2 269.2 85.6 230.8 Z"></path>
+        <path class="pm-ear-in" d="M94 178 C96 174.667 102.333 178.667 113 190 L97 198 C92.333 190 91.333 183.333 94 178 Z"></path>
+        <path class="pm-ear-in" d="M193 183 C191 179.667 186 182.667 178 192 L190 200 C194.667 194 195.667 188.333 193 183 Z"></path>
+        <g class="pm-eyes-open">
+          <g class="pm-pupils">
+            <circle class="pm-eye" cx="120.4" cy="240" r="8.5"></circle>
+            <circle class="pm-eye" cx="161.2" cy="240" r="8.5"></circle>
+            <circle class="pm-shine" cx="123.4" cy="236.6" r="2.6"></circle>
+            <circle class="pm-shine" cx="164.2" cy="236.6" r="2.6"></circle>
+          </g>
+        </g>
+        <g class="pm-eyes-closed">
+          <path class="pm-lid" d="M109.6 238 C116.8 244.4 124 244.4 131.2 238"></path>
+          <path class="pm-lid" d="M150.4 238 C157.6 244.4 164.8 244.4 172 238"></path>
+        </g>
+        <path class="pm-nose" d="M134.8 254.8 C138.8 252.4 142.8 252.4 146.8 254.8 C145.2 259.6 143.2 262.4 140.8 263.2 C138.4 262.4 136.4 259.6 134.8 254.8 Z"></path>
+        <ellipse class="pm-blush" cx="105.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+        <ellipse class="pm-blush" cx="176.5" cy="254.5" rx="8.5" ry="4.5"></ellipse>
+        <path class="pm-prop pm-tear" d="M114 252 C114 252 107 262 107 266 a7 7 0 0 0 14 0 C121 262 114 252 114 252 Z"></path>
+      </g>
+    </g>
+    <g class="pm-prop pm-popcorn">
+      <g class="pm-pops">
+        <circle class="pm-kernel pm-pop" cx="112" cy="162" r="6"></circle>
+        <circle class="pm-kernel pm-pop" cx="130" cy="160" r="6"></circle>
+      </g>
+      <circle class="pm-kernel" cx="104" cy="176" r="9"></circle>
+      <circle class="pm-kernel" cx="120" cy="171" r="10"></circle>
+      <circle class="pm-kernel" cx="136" cy="176" r="9"></circle>
+      <path class="pm-bucket" d="M92 180 L148 180 L141 232 L99 232 Z"></path>
+      <path class="pm-bucket-stripe" d="M107 182 L110 230 M133 182 L130 230"></path>
+    </g>
+  </g>
+  <text class="pm-prop pm-q" x="186" y="76">?</text>
+  <g class="pm-prop pm-zzz">
+    <text class="pm-z" x="168" y="66">z</text>
+    <text class="pm-z" x="184" y="46">z</text>
+    <text class="pm-z" x="202" y="26">Z</text>
+  </g>
+  <g class="pm-prop pm-stars">
+    <g transform="translate(22 40)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+    <g transform="translate(186 26) scale(1.2)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+    <g transform="translate(196 92) scale(0.8)"><path class="pm-star" d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"></path></g>
+  </g>
+  <g class="pm-prop pm-hearts">
+    <g transform="translate(176 44) scale(1.3)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+    <g transform="translate(36 64)"><path class="pm-heart" d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"></path></g>
+  </g>
+  <g class="pm-prop pm-dots">
+    <circle cx="96" cy="14" r="6"></circle>
+    <circle cx="120" cy="14" r="6"></circle>
+    <circle cx="144" cy="14" r="6"></circle>
+  </g>
+</svg>

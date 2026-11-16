@@ -1,0 +1,24 @@
+<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="400" height="400" viewBox="0 0 400 400">
+  <title>FINAL Purrama</title>
+  <g id="Layer_1" data-name="Layer 1">
+    <path id="F_badge" data-name="F badge" d="M112 20 L288 20 C338.81 20 380 61.19 380 112 L380 288 C380 338.81 338.81 380 288 380 L112 380 C61.19 380 20 338.81 20 288 L20 112 C20 61.19 61.19 20 112 20 Z" fill="#1f6b4f"></path>
+    <circle id="F_moon" data-name="F moon" cx="307" cy="79" r="19" fill="#e8b65a"></circle>
+    <circle id="F_moon_cut" data-name="F moon cut" cx="317" cy="69" r="17" fill="#1f6b4f"></circle>
+    <circle id="F_star1" data-name="F star1" cx="80.5" cy="78.5" r="2.5" fill="#f3e9d2"></circle>
+    <circle id="F_star2" data-name="F star2" cx="124" cy="58" r="2" fill="#f3e9d2"></circle>
+    <circle id="F_star3" data-name="F star3" cx="346" cy="134" r="2" fill="#f3e9d2"></circle>
+    <ellipse id="F_body" data-name="F body" cx="200.8" cy="214" rx="103.2" ry="84" fill="#f3e9d2"></ellipse>
+    <path id="F_stripe1" data-name="F stripe1" d="M246.4 149.2 C254.4 158.8 256.8 168.4 253.6 178" fill="none" stroke="#2e7d5b" stroke-width="7" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_stripe2" data-name="F stripe2" d="M272.8 170.8 C280.8 180.4 282.4 190 277.6 199.6" fill="none" stroke="#2e7d5b" stroke-width="7" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_tail_outline" data-name="F tail outline" d="M301.6 230.8 C292 290 249.6 318.8 174.4 317.2 C137.6 315.6 112 306 97.6 288.4" fill="none" stroke="#1f6b4f" stroke-width="36" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_tail" data-name="F tail" d="M301.6 230.8 C292 290 249.6 318.8 174.4 317.2 C137.6 315.6 112 306 97.6 288.4" fill="none" stroke="#f3e9d2" stroke-width="24" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_head" data-name="F head" d="M85.6 230.8 C77.6 190.8 80 169.2 92.8 166 C104 166 115.2 173.2 126.4 187.6 C139.2 183.6 152 184.4 164.8 190 C176 175.6 186.4 170 196 173.2 C205.6 179.6 205.6 200.4 196 235.6 C196 274 169.6 293.2 140.8 293.2 C109.6 293.2 83.2 269.2 85.6 230.8 Z" fill="#f3e9d2" stroke="#1f6b4f" stroke-width="7" stroke-linejoin="round"></path>
+    <path id="F_inner_ear_L" data-name="F inner ear L" d="M94 178 C96 174.667 102.333 178.667 113 190 L97 198 C92.333 190 91.333 183.333 94 178 Z" fill="#2e7d5b"></path>
+    <path id="F_inner_ear_R" data-name="F inner ear R" d="M193 183 C191 179.667 186 182.667 178 192 L190 200 C194.667 194 195.667 188.333 193 183 Z" fill="#2e7d5b"></path>
+    <path id="F_eye_L" data-name="F eye L" d="M109.6 238 C116.8 244.4 124 244.4 131.2 238" fill="none" stroke="#0e2a20" stroke-width="5.5" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_eye_R" data-name="F eye R" d="M150.4 238 C157.6 244.4 164.8 244.4 172 238" fill="none" stroke="#0e2a20" stroke-width="5.5" stroke-linecap="round" stroke-miterlimit="10"></path>
+    <path id="F_nose" data-name="F nose" d="M134.8 254.8 C138.8 252.4 142.8 252.4 146.8 254.8 C145.2 259.6 143.2 262.4 140.8 263.2 C138.4 262.4 136.4 259.6 134.8 254.8 Z" fill="#e39a86"></path>
+    <ellipse id="F_blush_L" data-name="F blush L" cx="105.5" cy="254.5" rx="8.5" ry="4.5" fill="#e39a86" opacity="0.5"></ellipse>
+    <ellipse id="F_blush_R" data-name="F blush R" cx="176.5" cy="254.5" rx="8.5" ry="4.5" fill="#e39a86" opacity="0.5"></ellipse>
+  </g>
+</svg>

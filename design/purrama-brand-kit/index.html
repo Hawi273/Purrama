@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Purrama Brand Kit</title>
+<link rel="icon" href="assets/logo/purrama-logo.svg">
+<link rel="stylesheet" href="css/purrama.css">
+<link rel="stylesheet" href="css/templates.css">
+<style>
+  .k-wrap { max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px; display: flex; flex-direction: column; gap: 56px; }
+  .k-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 24px; }
+  .k-sw { display: flex; flex-direction: column; gap: 6px; }
+  .k-sw div { height: 72px; border-radius: var(--radius-md); border: var(--border-edge) solid var(--edge); }
+  .k-sw b { font: 700 14px/1.2 var(--font-body); }
+  .k-sw code { font: 600 12px/1.2 ui-monospace, Menlo, monospace; color: var(--text-secondary); }
+  .k-sec { display: flex; flex-direction: column; gap: 20px; }
+  .k-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 24px; }
+  .k-links a { text-decoration: none; color: inherit; display: flex; flex-direction: column; gap: 6px; }
+  .k-links a:hover .pr-card__title, .k-links a:focus-visible .pr-card__title { color: var(--accent); }
+  [data-theme="daylight"] .k-links a:hover .pr-card__title { color: var(--brand); }
+  .k-links a:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: var(--radius-lg); }
+</style>
+</head>
+<body class="pr-root" style="margin: 0;">
+
+<header class="pr-appbar" style="padding-left: max(24px, calc((100% - 1120px) / 2)); padding-right: max(24px, calc((100% - 1120px) / 2));">
+  <span class="pr-appbar__brand"><img class="pr-appbar__logo" src="assets/logo/purrama-logo.svg" alt=""><span class="pr-appbar__wordmark">purrama</span></span>
+  <span class="pt-meta">Brand kit v1.0</span>
+  <button type="button" class="pr-btn pr-btn--quiet pr-btn--sm" style="margin-left: auto;" onclick="Purrama.setTheme(document.documentElement.dataset.theme === 'daylight' ? 'midnight' : 'daylight')">Switch light / dark</button>
+</header>
+
+<main class="k-wrap">
+
+<section class="pr-card pr-card--hero" style="display: flex; flex-wrap: wrap; align-items: center;">
+  <div style="flex: 999 1 420px; padding: 44px; display: flex; flex-direction: column; gap: 14px;">
+    <span class="pt-meta" style="text-transform: uppercase; letter-spacing: .1em; font-weight: 800;">Midnight Cushion</span>
+    <h1 class="display-xl" style="margin: 0;">Cozy movie ratings for night owls.</h1>
+    <p class="body-lg" style="margin: 0; color: var(--text-secondary); max-width: 560px;">Everything you need to make something that feels like Purrama, in any tool. Start with the principles, then grab the file for what you're making.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px;">
+      <a class="pr-btn pr-btn--primary" href="PRINCIPLES.md">Read the principles</a>
+      <a class="pr-btn pr-btn--brand" href="docs/USING-THE-KIT.md">How to use the kit</a>
+    </div>
+  </div>
+  <div style="flex: 1 1 260px; align-self: stretch; display: flex; justify-content: center; align-items: flex-end; padding: 24px 24px 0; background: var(--surface-200); border-left: var(--border-edge) solid var(--edge);">
+    <img src="assets/mascot/animated/mochi-night.svg" width="260" height="260" alt="Mochi, the Purrama cat, gazing at the moon">
+  </div>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">The three words</h2>
+  <div class="k-links">
+    <div class="pr-card"><h3 class="pr-card__title">Cozy</h3><p class="pr-card__body">Warm, soft, a little sleepy-cat. Playful in tone, serious about clarity.</p></div>
+    <div class="pr-card"><h3 class="pr-card__title">Intuitive</h3><p class="pr-card__body">One obvious next step per screen. It's the only amber button.</p></div>
+    <div class="pr-card"><h3 class="pr-card__title">Fluid</h3><p class="pr-card__body">Calm motion and round edges. Things settle; nothing flashes.</p></div>
+  </div>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">Colour</h2>
+  <div class="k-grid">
+    <div class="k-sw"><div style="background: var(--surface-000);"></div><b>Night</b><code>surface-000</code></div>
+    <div class="k-sw"><div style="background: var(--surface-100);"></div><b>Panel</b><code>surface-100</code></div>
+    <div class="k-sw"><div style="background: var(--surface-200);"></div><b>Inset</b><code>surface-200</code></div>
+    <div class="k-sw"><div style="background: var(--brand);"></div><b>Bottle green</b><code>brand #1F6B4F</code></div>
+    <div class="k-sw"><div style="background: var(--brand-soft);"></div><b>Stripe green</b><code>brand-soft #2E7D5B</code></div>
+    <div class="k-sw"><div style="background: var(--accent);"></div><b>Moon amber</b><code>accent #E8B65A</code></div>
+    <div class="k-sw"><div style="background: var(--text-primary);"></div><b>Text</b><code>text-primary</code></div>
+    <div class="k-sw"><div style="background: var(--cream);"></div><b>Cream</b><code>cream #F3E9D2</code></div>
+  </div>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">Type</h2>
+  <div class="pr-card" style="display: flex; flex-direction: column; gap: 12px;">
+    <span class="pt-meta">Fredoka SemiBold: headings · Nunito: everything else</span>
+    <div class="display-l">Every film deserves a second look.</div>
+    <div class="heading">Your ratings</div>
+    <p class="body-lg" style="margin: 0;">Rate what you watched, check the cast and runtime in a glance, and keep a quiet record of every night at the movies.</p>
+    <span class="meta" style="color: var(--text-secondary);">2001 · 2h 5m · Animation, Fantasy</span>
+  </div>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">Shape: cushions with outlines</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: center;">
+    <button type="button" class="pr-btn pr-btn--primary">Rate this film</button>
+    <button type="button" class="pr-btn pr-btn--brand">Add to watchlist</button>
+    <button type="button" class="pr-btn pr-btn--quiet">Share</button>
+    <span class="pr-chip pr-chip--accent">2001</span><span class="pr-chip">2h 5m</span>
+    <button type="button" class="pr-chip" aria-pressed="true">Sci-fi</button><button type="button" class="pr-chip" aria-pressed="false">Horror</button>
+    <span class="pr-stars" role="group" aria-label="Try rating">
+      <button type="button" class="is-on" aria-label="1 star"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></button>
+      <button type="button" class="is-on" aria-label="2 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></button>
+      <button type="button" class="is-on" aria-label="3 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></button>
+      <button type="button" class="is-on" aria-label="4 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></button>
+      <button type="button" aria-label="5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></button>
+    </span>
+  </div>
+  <div class="pr-film-row" style="max-width: 640px;">
+    <div class="pr-poster pr-poster--sm pr-poster--brand" role="img" aria-label=""></div>
+    <div class="pr-film-row__text"><span class="pr-film-row__title">Alien</span><span class="pr-film-row__meta">1979 · Ridley Scott</span></div>
+    <span class="pr-stars pr-stars--sm" role="img" aria-label="4 out of 5 stars"><span class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></span><span class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></span><span class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></span><span class="is-on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></span><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.2 6.6L12 17.4l-5.8 3.2 1.2-6.6L2.5 9.4l6.6-.8z"/></svg></span></span>
+  </div>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">Meet Mochi</h2>
+  <div class="k-grid">
+    <figure class="pr-card" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px;"><img src="assets/mascot/animated/mochi-wave.svg" width="120" height="120" alt=""><figcaption class="card-title">Wave hello</figcaption></figure>
+    <figure class="pr-card" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px;"><img src="assets/mascot/animated/mochi-rated.svg" width="120" height="120" alt=""><figcaption class="card-title">Star burst</figcaption></figure>
+    <figure class="pr-card" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px;"><img src="assets/mascot/animated/mochi-sleep.svg" width="120" height="120" alt=""><figcaption class="card-title">Sleep</figcaption></figure>
+    <figure class="pr-card" style="margin: 0; display: flex; flex-direction: column; align-items: center; gap: 6px;"><img src="assets/mascot/animated/mochi-sad.svg" width="120" height="120" alt=""><figcaption class="card-title">Sad</figcaption></figure>
+  </div>
+  <a class="pt-link" href="templates/mascot-gallery.html">See all 15 animations →</a>
+</section>
+
+<section class="k-sec">
+  <h2 class="pt-h2">Open the kit</h2>
+  <div class="k-links">
+    <a class="pr-card" href="PRINCIPLES.md"><span class="pr-card__title">Principles</span><span class="pr-card__body" style="margin: 0;">Voice, colour, type, shape, logo, mascot, checklist.</span></a>
+    <a class="pr-card" href="docs/USING-THE-KIT.md"><span class="pr-card__title">Using the kit</span><span class="pr-card__body" style="margin: 0;">Web, React, Tailwind, Figma, Canva, slides, print, AI tools.</span></a>
+    <a class="pr-card" href="docs/COMPONENTS.md"><span class="pr-card__title">Components</span><span class="pr-card__body" style="margin: 0;">Copy-paste HTML for buttons, cards, stars, rows and more.</span></a>
+    <a class="pr-card" href="docs/MASCOT.md"><span class="pr-card__title">Mascot guide</span><span class="pr-card__body" style="margin: 0;">15 animations, sizes and rules for Mochi.</span></a>
+    <a class="pr-card" href="docs/TEMPLATES.md"><span class="pr-card__title">Templates guide</span><span class="pr-card__body" style="margin: 0;">7 ready pages and how to adapt them.</span></a>
+    <a class="pr-card" href="docs/AI-BRIEF.md"><span class="pr-card__title">AI brief</span><span class="pr-card__body" style="margin: 0;">Paste into any AI tool so it designs in Purrama.</span></a>
+  </div>
+  <h3 class="heading" style="margin: 8px 0 0;">Page templates</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/home.html">Home</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/film.html">Film page</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/search.html">Search</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/ratings.html">My ratings</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/sign-in.html">Sign in</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/onboarding.html">Onboarding</a>
+    <a class="pr-btn pr-btn--quiet pr-btn--sm" href="templates/states.html">States &amp; feedback</a>
+  </div>
+</section>
+
+</main>
+<script src="js/purrama.js"></script>
+</body>
+</html>
