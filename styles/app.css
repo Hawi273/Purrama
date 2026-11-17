@@ -166,7 +166,11 @@ body { padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); }
 .section-link { color: var(--accent); font: 700 14px/1.2 var(--font-body); text-underline-offset: 3px; }
 .personal, .rails { display: grid; gap: 48px; }
 /* Grid tracks default to min-content; rails must scroll inside them, not widen the page. */
-.section, .personal, .rails, .detail-main, .browse__results, .detail-layout, .browse { grid-template-columns: minmax(0, 1fr); }
+/* Same for every single-column grid list: an auto track grows to its widest row
+   (a long credit title made the person page 741px wide on phones, #7). */
+.section, .personal, .rails, .detail-main, .browse__results, .detail-layout, .browse,
+.rows, .episodes, .title-hero__body, .person-hero__body, .profile__body, .filters,
+.discover-controls, .state, .season-info, .action-panel__rate { grid-template-columns: minmax(0, 1fr); }
 .personal:empty { display: none; }
 
 /* ---------- Chips ---------- */
@@ -335,7 +339,7 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .detail-main { display: grid; gap: 48px; min-width: 0; }
 @media (min-width: 1000px) { .detail-layout { grid-template-columns: minmax(0, 1fr) 340px; } .facts { position: sticky; top: calc(var(--appbar-h) + 16px); } }
 
-.facts dl, .crew, .person-facts { margin: 0; display: grid; grid-template-columns: max-content 1fr; }
+.facts dl, .crew, .person-facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); }
 .facts dl { margin-top: 12px; }
 .facts dt, .facts dd, .crew dt, .crew dd { padding: 10px 0; border-bottom: var(--border-hair) solid var(--hairline); }
 .facts dt, .crew dt, .person-facts dt { font: 600 14px/1.4 var(--font-body); color: var(--text-secondary); padding-right: 16px; }
@@ -424,6 +428,8 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .person-hero__photo { padding: 24px; display: grid; place-items: center; background: var(--surface-200); border-bottom: var(--border-edge) solid var(--edge); }
 .person-hero__photo .pr-poster { width: min(220px, 60vw); }
 .person-hero__body { padding: 24px; display: grid; gap: 14px; align-content: start; }
+/* column-gap, not dt padding: the padding reset below once removed the space after "Place of birth" (#5). */
+.person-facts { column-gap: 16px; }
 .person-facts dt, .person-facts dd { padding: 6px 0; }
 .person-facts dd { text-align: left; }
 .bio { font: 400 17px/1.65 var(--font-body); color: var(--text-secondary); white-space: pre-line; max-width: 72ch; }
