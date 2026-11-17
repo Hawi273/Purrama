@@ -517,3 +517,9 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* Justified film overview and person biography (#6). Hyphenation (html lang="en")
+   keeps word gaps even; phones stay left-aligned, where narrow justified lines open big gaps. */
+@media (min-width: 600px) {
+  .title-hero .overview, .bio { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
+}
