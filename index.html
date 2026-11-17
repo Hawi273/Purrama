@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta http-equiv="Content-Security-Policy"
-        content="default-src 'none'; script-src 'self' 'sha256-w3z2i7H7zI0HPF6LtPhpyVWYTmfWXO51zxurMwxarpA='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://image.tmdb.org; connect-src https://purrama-api.syzmon-hawajski.workers.dev; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+        content="default-src 'none'; script-src 'self' 'sha256-XrhHVI2G0fS/upvuhYTbKl5q0uJ5Ys9mrEVAMJHrEbI='; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://image.tmdb.org; connect-src https://purrama-api.syzmon-hawajski.workers.dev; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>purrama · Cozy movie and TV discovery for night owls</title>
   <meta name="description" content="Find something to watch tonight. Browse films and series, keep a watchlist, rate what you saw. Movie and TV data from TMDB.">
@@ -23,38 +23,39 @@
   <script type="importmap">
     {
       "imports": {
-        "./config.js": "./config.js?v=0e3554459b",
-        "./src/api/client.js": "./src/api/client.js?v=0e3554459b",
-        "./src/api/images.js": "./src/api/images.js?v=0e3554459b",
-        "./src/api/tmdb.js": "./src/api/tmdb.js?v=0e3554459b",
-        "./src/api/types.js": "./src/api/types.js?v=0e3554459b",
-        "./src/main.js": "./src/main.js?v=0e3554459b",
-        "./src/pages/browse.js": "./src/pages/browse.js?v=0e3554459b",
-        "./src/pages/common.js": "./src/pages/common.js?v=0e3554459b",
-        "./src/pages/discover.js": "./src/pages/discover.js?v=0e3554459b",
-        "./src/pages/home.js": "./src/pages/home.js?v=0e3554459b",
-        "./src/pages/library.js": "./src/pages/library.js?v=0e3554459b",
-        "./src/pages/not-found.js": "./src/pages/not-found.js?v=0e3554459b",
-        "./src/pages/person.js": "./src/pages/person.js?v=0e3554459b",
-        "./src/pages/search.js": "./src/pages/search.js?v=0e3554459b",
-        "./src/pages/title.js": "./src/pages/title.js?v=0e3554459b",
-        "./src/router.js": "./src/router.js?v=0e3554459b",
-        "./src/state/library.js": "./src/state/library.js?v=0e3554459b",
-        "./src/ui/components.js": "./src/ui/components.js?v=0e3554459b",
-        "./src/ui/dom.js": "./src/ui/dom.js?v=0e3554459b",
-        "./src/ui/feedback.js": "./src/ui/feedback.js?v=0e3554459b",
-        "./src/ui/header-search.js": "./src/ui/header-search.js?v=0e3554459b",
-        "./src/ui/icons.js": "./src/ui/icons.js?v=0e3554459b",
-        "./src/ui/lifecycle.js": "./src/ui/lifecycle.js?v=0e3554459b",
-        "./src/ui/mochi.js": "./src/ui/mochi.js?v=0e3554459b",
-        "./src/ui/rail.js": "./src/ui/rail.js?v=0e3554459b"
+        "./config.js": "./config.js?v=5e2bb905e7",
+        "./src/api/client.js": "./src/api/client.js?v=5e2bb905e7",
+        "./src/api/images.js": "./src/api/images.js?v=5e2bb905e7",
+        "./src/api/tmdb.js": "./src/api/tmdb.js?v=5e2bb905e7",
+        "./src/api/types.js": "./src/api/types.js?v=5e2bb905e7",
+        "./src/main.js": "./src/main.js?v=5e2bb905e7",
+        "./src/pages/browse.js": "./src/pages/browse.js?v=5e2bb905e7",
+        "./src/pages/common.js": "./src/pages/common.js?v=5e2bb905e7",
+        "./src/pages/discover.js": "./src/pages/discover.js?v=5e2bb905e7",
+        "./src/pages/home.js": "./src/pages/home.js?v=5e2bb905e7",
+        "./src/pages/library.js": "./src/pages/library.js?v=5e2bb905e7",
+        "./src/pages/not-found.js": "./src/pages/not-found.js?v=5e2bb905e7",
+        "./src/pages/person.js": "./src/pages/person.js?v=5e2bb905e7",
+        "./src/pages/search.js": "./src/pages/search.js?v=5e2bb905e7",
+        "./src/pages/title.js": "./src/pages/title.js?v=5e2bb905e7",
+        "./src/router.js": "./src/router.js?v=5e2bb905e7",
+        "./src/state/library.js": "./src/state/library.js?v=5e2bb905e7",
+        "./src/ui/components.js": "./src/ui/components.js?v=5e2bb905e7",
+        "./src/ui/dom.js": "./src/ui/dom.js?v=5e2bb905e7",
+        "./src/ui/feedback.js": "./src/ui/feedback.js?v=5e2bb905e7",
+        "./src/ui/header-search.js": "./src/ui/header-search.js?v=5e2bb905e7",
+        "./src/ui/icons.js": "./src/ui/icons.js?v=5e2bb905e7",
+        "./src/ui/lifecycle.js": "./src/ui/lifecycle.js?v=5e2bb905e7",
+        "./src/ui/mochi.js": "./src/ui/mochi.js?v=5e2bb905e7",
+        "./src/ui/nav.js": "./src/ui/nav.js?v=5e2bb905e7",
+        "./src/ui/rail.js": "./src/ui/rail.js?v=5e2bb905e7"
       }
     }
   </script>
   <!-- importmap:end -->
-  <link rel="stylesheet" href="styles/purrama.css?v=0e3554459b">
-  <link rel="stylesheet" href="styles/app.css?v=0e3554459b">
-  <script type="module" src="src/main.js?v=0e3554459b"></script>
+  <link rel="stylesheet" href="styles/purrama.css?v=5e2bb905e7">
+  <link rel="stylesheet" href="styles/app.css?v=5e2bb905e7">
+  <script type="module" src="src/main.js?v=5e2bb905e7"></script>
 </head>
 <body class="pr-root">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -70,8 +71,15 @@
         <a href="#/movies" data-nav="movies">Movies</a>
         <a href="#/tv" data-nav="tv-shows">TV series</a>
         <a href="#/discover" data-nav="discover">Discover</a>
-        <a href="#/library?tab=watchlist" data-nav="watchlist">Watchlist</a>
-        <a href="#/library?tab=favorites" data-nav="favorites">Favourites</a>
+        <div class="navmenu">
+          <a href="#/library?tab=watchlist" data-nav="library" class="navmenu__trigger" aria-haspopup="true">Your library</a>
+          <ul class="navmenu__list" aria-label="Your library">
+            <li><a href="#/library?tab=watchlist" data-nav-tab="watchlist">Watchlist <span class="navmenu__count" data-count="watchlist"></span></a></li>
+            <li><a href="#/library?tab=favorites" data-nav-tab="favorites">Favourites <span class="navmenu__count" data-count="favorites"></span></a></li>
+            <li><a href="#/library?tab=watched" data-nav-tab="watched">Watched <span class="navmenu__count" data-count="watched"></span></a></li>
+            <li><a href="#/library?tab=ratings" data-nav-tab="ratings">Ratings <span class="navmenu__count" data-count="ratings"></span></a></li>
+          </ul>
+        </div>
       </nav>
       <div class="appbar__search" id="header-search"></div>
       <a class="pr-btn pr-btn--quiet pr-btn--icon appbar__mobile-discover" href="#/discover" aria-label="Discover"></a>

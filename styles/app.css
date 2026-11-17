@@ -67,6 +67,28 @@ button, input, select { font: inherit; color: inherit; }
 }
 .appbar__nav a:hover { color: var(--text-primary); }
 .appbar__nav a[aria-current="page"] { color: var(--text-primary); background: var(--surface-200); }
+/* "Your library" opens on hover or keyboard focus; clicking it goes to the watchlist (#11). */
+.navmenu { position: relative; }
+.navmenu__trigger::after {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin-left: 8px; vertical-align: 3px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+}
+.navmenu__list {
+  position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; min-width: 220px;
+  margin: 0; padding: 8px; list-style: none; display: none;
+  background: var(--surface-100); border: var(--border-edge) solid var(--edge); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+/* An invisible bridge so the pointer can cross the gap without closing the menu. */
+.navmenu__list::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.navmenu:hover .navmenu__list, .navmenu:focus-within .navmenu__list { display: grid; gap: 2px; }
+.navmenu.navmenu--closed .navmenu__list { display: none; }
+.appbar__nav .navmenu__list a {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 10px 12px; border-radius: var(--radius-md);
+}
+.appbar__nav .navmenu__list a:hover, .appbar__nav .navmenu__list a[aria-current="page"] { background: var(--surface-200); color: var(--text-primary); }
+.navmenu__count { font: 800 13px/1 var(--font-body); color: var(--text-secondary); }
 .appbar__search { display: none; margin-left: auto; width: 300px; max-width: 34vw; }
 .appbar__mobile-discover { margin-left: auto; }
 @media (min-width: 900px) {

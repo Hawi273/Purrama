@@ -9,6 +9,7 @@ import { pageSignal } from '../ui/lifecycle.js';
 import { library } from '../state/library.js';
 import { href, replaceQuery } from '../router.js';
 import { setMeta } from './common.js';
+import { highlightLibraryTab } from '../ui/nav.js';
 
 /** @typedef {import('../router.js').Route} Route */
 /** @typedef {'watchlist' | 'favorites' | 'watched' | 'ratings'} Tab */
@@ -35,28 +36,22 @@ export function render(main, route) {
     tab: TABS.some(([k]) => k === q.get('tab')) ? /** @type {Tab} */ (q.get('tab')) : 'watchlist',
     media: q.get('media') === 'movie' || q.get('media') === 'tv' ? /** @type {'movie' | 'tv'} */ (q.get('media')) : 'all',
   };
-  const tabs = h('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Your lists' });
+  const tabs = h('div', { class: 'tabs', role: 'tablist', 'aria-label': 'Your library' });
   const filters = h('div', { class: 'chips', role: 'group', 'aria-label': 'Show' });
   const panel = h('div', { role: 'tabpanel', id: 'library-panel', class: 'library-panel' });
-  const counts = h('div', { class: 'chips profile-counts' });
 
+  // One heading and one set of counts (on the tabs), no repeated labels (#11).
   mount(main, h('div', { class: 'container page' },
     h('article', { class: 'pr-card pr-card--hero profile', 'aria-labelledby': 'library-title' },
       h('div', { class: 'profile__body' },
-        h('p', { class: 'eyebrow', text: 'Your library' }),
-        h('h1', { class: 'page-title', id: 'library-title', text: 'Your lists' }),
-        h('p', { class: 'meta', text: 'Saved in this browser only. There are no accounts yet, so your lists stay on this device and don’t sync anywhere.' }),
-        counts)),
+        h('h1', { class: 'page-title', id: 'library-title', text: 'Your library' }),
+        h('p', { class: 'meta', text: 'Saved in this browser only. There are no accounts yet, so your library stays on this device and doesn’t sync anywhere.' }))),
     tabs, filters, panel));
 
   const paint = () => {
     const n = library.counts();
-    setMeta(TABS.find(([k]) => k === state.tab)?.[1] ?? 'Library', 'Your watchlist, favourites, watched titles and ratings on purrama.');
-    counts.replaceChildren(
-      h('span', { class: 'pr-chip pr-chip--selected', text: `${n.ratings} rated` }),
-      h('span', { class: 'pr-chip', text: `${n.watchlist} on watchlist` }),
-      h('span', { class: 'pr-chip', text: `${n.favorites} favourite${n.favorites === 1 ? '' : 's'}` }),
-      h('span', { class: 'pr-chip', text: `${n.watched} watched` }));
+    setMeta(TABS.find(([k]) => k === state.tab)?.[1] ?? 'Your library', 'Your watchlist, favourites, watched titles and ratings on purrama.');
+    highlightLibraryTab(state.tab);
     tabs.replaceChildren(...TABS.map(([key, label]) => h('button', {
       type: 'button', role: 'tab', class: 'tab', id: `tab-${key}`, 'aria-selected': String(state.tab === key), 'aria-controls': 'library-panel',
       tabindex: state.tab === key ? '0' : '-1', text: `${label} ${n[key]}`,
