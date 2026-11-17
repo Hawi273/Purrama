@@ -321,10 +321,6 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 @media (max-width: 899px) { .hero__art { aspect-ratio: 16 / 9; } }
 
 /* ---------- Title page ---------- */
-.backdrop { margin: 0 0 -24px; border: var(--border-edge) solid var(--edge); border-radius: var(--radius-xl); overflow: hidden; background: var(--surface-200); aspect-ratio: 21 / 9; max-height: 340px; width: 100%; }
-.backdrop img { object-position: center 30%; }
-.backdrop img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (max-width: 599px) { .backdrop { aspect-ratio: 16 / 9; border-radius: var(--radius-lg); } }
 .title-hero { display: grid; }
 .title-hero__poster { display: grid; place-items: center; padding: 24px; background: var(--surface-200); border-bottom: var(--border-edge) solid var(--edge); }
 .title-hero__poster .pr-poster { width: min(220px, 60vw); }
@@ -508,7 +504,14 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .dialog__title { font: 600 20px/1.25 var(--font-display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .trailer { aspect-ratio: 16 / 9; background: var(--edge); }
 .trailer-frame { width: 100%; height: 100%; border: 0; display: block; }
-.dialog__image { display: block; width: 100%; height: auto; }
+/* Image gallery (#8): arrows sit in their own columns, never over the image. */
+.gallery { display: grid; gap: 12px; padding: 16px; }
+.gallery__stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.gallery__frame { border: var(--border-edge) solid var(--edge); border-radius: var(--radius-md); overflow: hidden; background: var(--edge); aspect-ratio: 16 / 9; }
+.gallery__image { display: block; width: 100%; height: 100%; object-fit: contain; touch-action: pan-y; user-select: none; }
+.gallery__nav:disabled { opacity: .35; }
+.gallery__counter { text-align: center; font: 700 14px/1.2 var(--font-body); color: var(--text-secondary); }
+@media (max-width: 599px) { .gallery { padding: 12px 8px; } .gallery__stage { gap: 6px; } .gallery__nav { width: 40px; min-height: 40px; } }
 
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
