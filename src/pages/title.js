@@ -8,10 +8,11 @@ import {
   poster, tmdbScore, runtime, longDate, yearOf, starsInput, personCard, titleCard, sectionHead, snapshot,
 } from '../ui/components.js';
 import { rail } from '../ui/rail.js';
-import { errorState, toast, openTrailer, openDialog, inlineError } from '../ui/feedback.js';
+import { errorState, toast, openTrailer, inlineError } from '../ui/feedback.js';
+import { openGallery } from '../ui/gallery.js';
 import { mochi } from '../ui/mochi.js';
 import { pageSignal } from '../ui/lifecycle.js';
-import { imageUrl, backdropSrcset } from '../api/images.js';
+import { imageUrl } from '../api/images.js';
 import * as tmdb from '../api/tmdb.js';
 import { library } from '../state/library.js';
 import { href, replaceQuery } from '../router.js';
@@ -51,11 +52,8 @@ export async function render(main, route) {
   const name = movie ? movie.title : show ? show.name : 'Untitled';
   setMeta(name, details.overview || `${name} on purrama.`);
 
-  const backdrop = imageUrl(details.backdrop_path, 'backdrop', 'lg');
   const page = h('div', { class: 'container page page--title' },
     h('a', { class: 'back-link', href: href(media === 'tv' ? '/tv' : '/movies') }, icon('back', { size: 16 }), media === 'tv' ? 'Back to series' : 'Back to films'),
-    backdrop ? h('figure', { class: 'backdrop' },
-      h('img', { src: backdrop, srcset: backdropSrcset(details.backdrop_path), sizes: '(max-width: 1200px) 100vw, 1200px', alt: '', fetchpriority: 'high', width: 1280, height: 720 })) : null,
     hero(details, media, name),
     h('div', { class: 'detail-layout' },
       h('div', { class: 'detail-main' },
@@ -120,14 +118,14 @@ function actionPanel(d, media, name, item) {
   const signal = pageSignal();
   const current = library.rating(media, d.id);
   /** @param {number} r @returns {import('../ui/mochi.js').MochiMood} */
-  const moodFor = (r) => (r === 0 ? 'curious' : r >= 4 ? 'rated' : r === 3 ? 'blink' : 'sad');
+  const moodFor = (r) => (r === 0 ? 'curious' : r >= 8 ? 'rated' : r >= 5 ? 'blink' : 'sad');
   const cat = h('div', { class: 'action-panel__cat' }, mochi(moodFor(current), 88));
   const hint = h('p', { class: 'action-panel__hint', text: current ? 'Tap your rating again to clear it.' : 'Tap a star to rate it.' });
   const stars = starsInput(current, (value) => {
     library.rate(item, value);
     cat.replaceChildren(mochi(moodFor(value), 88, value ? `Mochi reacting to your ${value}-star rating` : undefined));
     hint.textContent = value ? 'Saved. Tap your rating again to clear it.' : 'Rating cleared.';
-    toast(value ? `Rating saved` : 'Rating cleared', { detail: value ? `${name} · ${value} star${value > 1 ? 's' : ''}` : name });
+    toast(value ? `Rating saved` : 'Rating cleared', { detail: value ? `${name} · ${value}/10` : name });
   }, `Your rating for ${name}`);
 
   const watchlist = h('button', { type: 'button', class: 'pr-btn pr-btn--primary' });
@@ -257,15 +255,20 @@ function videosSection(d, name) {
 
 /** @param {MovieDetails | TvDetails} d @param {string} name */
 function imagesSection(d, name) {
-  const backdrops = (d.images?.backdrops ?? []).slice(0, 10);
-  if (backdrops.length < 2) return null;
+  // The main backdrop leads the gallery now that it no longer sits above the hero (#10).
+  const paths = [d.backdrop_path, ...(d.images?.backdrops ?? []).map((b) => b.file_path)]
+    .filter((p, i, all) => typeof p === 'string' && all.indexOf(p) === i)
+    .slice(0, 12);
+  const backdrops = /** @type {string[]} */ (paths);
+  if (!backdrops.length) return null;
+  const large = backdrops.map((p, i) => ({ src: imageUrl(p, 'backdrop', 'lg') ?? '', alt: `Still ${i + 1} from ${name}` }));
   return rail({
     title: 'Images',
     variant: 'wide',
-    load: async () => backdrops.map((img, i) => h('button', {
+    load: async () => backdrops.map((path, i) => h('button', {
       type: 'button', class: 'still', 'aria-label': `Open image ${i + 1} of ${backdrops.length}`,
-      on: { click: () => openDialog(name, h('img', { class: 'dialog__image', src: imageUrl(img.file_path, 'backdrop', 'lg') ?? '', alt: `Still from ${name}` }), { wide: true }) },
-    }, h('img', { src: imageUrl(img.file_path, 'backdrop', 'sm') ?? '', alt: '', loading: 'lazy', width: 300, height: 169 }))),
+      on: { click: () => openGallery(large, i, name) },
+    }, h('img', { src: imageUrl(path, 'backdrop', 'sm') ?? '', alt: '', loading: 'lazy', width: 300, height: 169 }))),
   });
 }
 

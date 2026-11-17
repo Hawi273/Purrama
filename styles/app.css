@@ -67,6 +67,29 @@ button, input, select { font: inherit; color: inherit; }
 }
 .appbar__nav a:hover { color: var(--text-primary); }
 .appbar__nav a[aria-current="page"] { color: var(--text-primary); background: var(--surface-200); }
+/* "Your library" opens on hover or keyboard focus; clicking it goes to the watchlist (#11). */
+.navmenu { position: relative; }
+.appbar__nav .navmenu__trigger { display: inline-flex; align-items: center; }
+.navmenu__trigger::after {
+  content: ""; display: inline-block; width: 7px; height: 7px; margin: -4px 0 0 8px;
+  border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: rotate(45deg);
+}
+.navmenu__list {
+  position: absolute; z-index: 40; top: calc(100% + 6px); left: 0; min-width: 220px;
+  margin: 0; padding: 8px; list-style: none; display: none;
+  background: var(--surface-100); border: var(--border-edge) solid var(--edge); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+/* An invisible bridge so the pointer can cross the gap without closing the menu. */
+.navmenu__list::before { content: ""; position: absolute; left: 0; right: 0; top: -10px; height: 10px; }
+.navmenu:hover .navmenu__list, .navmenu:focus-within .navmenu__list { display: grid; gap: 2px; }
+.navmenu.navmenu--closed .navmenu__list { display: none; }
+.appbar__nav .navmenu__list a {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 10px 12px; border-radius: var(--radius-md);
+}
+.appbar__nav .navmenu__list a:hover, .appbar__nav .navmenu__list a[aria-current="page"] { background: var(--surface-200); color: var(--text-primary); }
+.navmenu__count { font: 800 13px/1 var(--font-body); color: var(--text-secondary); }
 .appbar__search { display: none; margin-left: auto; width: 300px; max-width: 34vw; }
 .appbar__mobile-discover { margin-left: auto; }
 @media (min-width: 900px) {
@@ -166,7 +189,11 @@ body { padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom)); }
 .section-link { color: var(--accent); font: 700 14px/1.2 var(--font-body); text-underline-offset: 3px; }
 .personal, .rails { display: grid; gap: 48px; }
 /* Grid tracks default to min-content; rails must scroll inside them, not widen the page. */
-.section, .personal, .rails, .detail-main, .browse__results, .detail-layout, .browse { grid-template-columns: minmax(0, 1fr); }
+/* Same for every single-column grid list: an auto track grows to its widest row
+   (a long credit title made the person page 741px wide on phones, #7). */
+.section, .personal, .rails, .detail-main, .browse__results, .detail-layout, .browse,
+.rows, .episodes, .title-hero__body, .person-hero__body, .profile__body, .filters,
+.discover-controls, .state, .season-info, .action-panel__rate { grid-template-columns: minmax(0, 1fr); }
 .personal:empty { display: none; }
 
 /* ---------- Chips ---------- */
@@ -295,10 +322,6 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 @media (max-width: 899px) { .hero__art { aspect-ratio: 16 / 9; } }
 
 /* ---------- Title page ---------- */
-.backdrop { margin: 0 0 -24px; border: var(--border-edge) solid var(--edge); border-radius: var(--radius-xl); overflow: hidden; background: var(--surface-200); aspect-ratio: 21 / 9; max-height: 340px; width: 100%; }
-.backdrop img { object-position: center 30%; }
-.backdrop img { width: 100%; height: 100%; object-fit: cover; display: block; }
-@media (max-width: 599px) { .backdrop { aspect-ratio: 16 / 9; border-radius: var(--radius-lg); } }
 .title-hero { display: grid; }
 .title-hero__poster { display: grid; place-items: center; padding: 24px; background: var(--surface-200); border-bottom: var(--border-edge) solid var(--edge); }
 .title-hero__poster .pr-poster { width: min(220px, 60vw); }
@@ -323,19 +346,27 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .action-panel__cat { grid-row: span 1; }
 .action-panel__rate { display: grid; gap: 6px; }
 .action-panel__hint { font: 600 13px/1.4 var(--font-body); color: var(--text-secondary); }
-/* Touch targets: the kit asks for 44px; its star buttons are 30px. */
-@media (pointer: coarse) { .action-panel .pr-stars button { min-height: 44px; padding: 9px 5px; } .action-panel .pr-stars { gap: 0; } }
 .action-panel .actions { grid-column: 1 / -1; }
-@media (min-width: 1100px) {
-  .action-panel { grid-template-columns: auto auto 1fr; }
-  .action-panel .actions { grid-column: auto; justify-content: flex-end; }
+
+/* Ten-star rating, 1–10 (#9). */
+.stars-10__wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.stars-10 { gap: 2px; }
+.stars-10__value { font: 600 22px/1 var(--font-display); color: var(--text-primary); min-width: 3.2em; }
+/* Touch targets: 44px tall (the kit's minimum); ten stars must still fit a phone. */
+@media (pointer: coarse) { .action-panel .stars-10 button { min-height: 44px; padding: 9px 1px; } .action-panel .stars-10 { gap: 0; } }
+@media (max-width: 599px) {
+  .action-panel { grid-template-columns: minmax(0, 1fr); }
+  .action-panel__cat { display: none; } /* ten stars need the whole width */
+  .stars-10 svg { width: 24px; height: 24px; }
 }
+.rating-badge { display: inline-flex; align-items: center; gap: 4px; font: 800 14px/1 var(--font-body); color: var(--text-primary); white-space: nowrap; }
+.rating-badge .pr-stars svg { width: 16px; height: 16px; }
 
 .detail-layout { display: grid; gap: 48px; align-items: start; }
 .detail-main { display: grid; gap: 48px; min-width: 0; }
 @media (min-width: 1000px) { .detail-layout { grid-template-columns: minmax(0, 1fr) 340px; } .facts { position: sticky; top: calc(var(--appbar-h) + 16px); } }
 
-.facts dl, .crew, .person-facts { margin: 0; display: grid; grid-template-columns: max-content 1fr; }
+.facts dl, .crew, .person-facts { margin: 0; display: grid; grid-template-columns: max-content minmax(0, 1fr); }
 .facts dl { margin-top: 12px; }
 .facts dt, .facts dd, .crew dt, .crew dd { padding: 10px 0; border-bottom: var(--border-hair) solid var(--hairline); }
 .facts dt, .crew dt, .person-facts dt { font: 600 14px/1.4 var(--font-body); color: var(--text-secondary); padding-right: 16px; }
@@ -424,6 +455,8 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .person-hero__photo { padding: 24px; display: grid; place-items: center; background: var(--surface-200); border-bottom: var(--border-edge) solid var(--edge); }
 .person-hero__photo .pr-poster { width: min(220px, 60vw); }
 .person-hero__body { padding: 24px; display: grid; gap: 14px; align-content: start; }
+/* column-gap, not dt padding: the padding reset below once removed the space after "Place of birth" (#5). */
+.person-facts { column-gap: 16px; }
 .person-facts dt, .person-facts dd { padding: 6px 0; }
 .person-facts dd { text-align: left; }
 .bio { font: 400 17px/1.65 var(--font-body); color: var(--text-secondary); white-space: pre-line; max-width: 72ch; }
@@ -480,9 +513,22 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .dialog__title { font: 600 20px/1.25 var(--font-display); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .trailer { aspect-ratio: 16 / 9; background: var(--edge); }
 .trailer-frame { width: 100%; height: 100%; border: 0; display: block; }
-.dialog__image { display: block; width: 100%; height: auto; }
+/* Image gallery (#8): arrows sit in their own columns, never over the image. */
+.gallery { display: grid; gap: 12px; padding: 16px; }
+.gallery__stage { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 12px; }
+.gallery__frame { border: var(--border-edge) solid var(--edge); border-radius: var(--radius-md); overflow: hidden; background: var(--edge); aspect-ratio: 16 / 9; }
+.gallery__image { display: block; width: 100%; height: 100%; object-fit: contain; touch-action: pan-y; user-select: none; }
+.gallery__nav:disabled { opacity: .35; }
+.gallery__counter { text-align: center; font: 700 14px/1.2 var(--font-body); color: var(--text-secondary); }
+@media (max-width: 599px) { .gallery { padding: 12px 8px; } .gallery__stage { gap: 6px; } .gallery__nav { width: 40px; min-height: 40px; } }
 
 /* ---------- Motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Justified film overview and person biography (#6). Hyphenation (html lang="en")
+   keeps word gaps even; phones stay left-aligned, where narrow justified lines open big gaps. */
+@media (min-width: 600px) {
+  .title-hero .overview, .bio { text-align: justify; hyphens: auto; -webkit-hyphens: auto; }
 }

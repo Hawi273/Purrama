@@ -12,7 +12,7 @@ globalThis.localStorage = /** @type {Storage} */ ({
   length: 0,
 });
 
-const { library, parseStore, STORE_KEY, LEGACY_KEY } = await import('../src/state/library.js');
+const { library, parseStore, STORE_KEY, V2_KEY, LEGACY_KEY } = await import('../src/state/library.js');
 
 const dune = { id: 438631, media: /** @type {const} */ ('movie'), title: 'Dune', poster_path: '/d.jpg', date: '2021-09-15' };
 const severance = { id: 95396, media: /** @type {const} */ ('tv'), title: 'Severance', poster_path: null, date: '2022-02-17' };
@@ -42,10 +42,10 @@ test('rating marks a title watched; 0 clears the rating only', () => {
   assert.equal(library.has('watched', 'tv', severance.id), true);
 });
 
-test('v1 ratings are migrated as movie ratings', () => {
+test('v1 ratings are migrated as movie ratings on the 1–10 scale', () => {
   store.set(LEGACY_KEY, JSON.stringify({ 603: { id: 603, title: 'The Matrix', release_date: '1999-03-30', poster_path: '/m.jpg', rating: 5, ratedAt: 10 } }));
   library.load();
-  assert.equal(library.rating('movie', 603), 5);
+  assert.equal(library.rating('movie', 603), 10); // v1 rated 1–5, doubled to the 1–10 scale
   assert.equal(library.items('ratings')[0]?.title, 'The Matrix');
 });
 
@@ -62,4 +62,29 @@ test('a broken store loads as empty', () => {
   store.set(STORE_KEY, '{not json');
   library.load();
   assert.deepEqual(library.counts(), { watchlist: 0, favorites: 0, watched: 0, ratings: 0 });
+});
+
+test('a v2 store migrates once: ratings doubled to 1–10, lists kept, old key removed (#9)', () => {
+  store.set(V2_KEY, JSON.stringify({
+    version: 2,
+    watchlist: { 'tv:95396': { ...severance, addedAt: 1 } },
+    ratings: { 'movie:438631': { ...dune, rating: 4, addedAt: 2 }, 'movie:1': { id: 1, media: 'movie', title: 'Bad', rating: 7 } },
+  }));
+  library.load();
+  assert.equal(library.rating('movie', dune.id), 8);
+  assert.equal(library.rating('movie', 1), 0); // 7 was out of range on the old 1–5 scale
+  assert.equal(library.has('watchlist', 'tv', severance.id), true);
+  assert.equal(store.has(V2_KEY), false);
+  assert.equal(JSON.parse(store.get(STORE_KEY)).version, 3);
+  library.load(); // a second load must not double again
+  assert.equal(library.rating('movie', dune.id), 8);
+});
+
+test('ratings are whole numbers from 1 to 10', () => {
+  library.rate(dune, 10);
+  assert.equal(library.rating('movie', dune.id), 10);
+  library.rate(dune, 11);
+  assert.equal(library.rating('movie', dune.id), 0);
+  const data = parseStore({ version: 3, ratings: { a: { ...dune, rating: 7 }, b: { ...severance, rating: 12 } } }, null);
+  assert.deepEqual(Object.values(data.ratings).map((r) => r.rating), [7]);
 });

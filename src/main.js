@@ -3,6 +3,7 @@
 import { startRouter, href } from './router.js';
 import { initLibrary, library } from './state/library.js';
 import { newPage } from './ui/lifecycle.js';
+import { highlightLibraryTab } from './ui/nav.js';
 import { icon } from './ui/icons.js';
 import { mount, h } from './ui/dom.js';
 import { searchBox } from './ui/header-search.js';
@@ -29,23 +30,33 @@ const main = /** @type {HTMLElement} */ (document.getElementById('main'));
 let firstRoute = true;
 
 /** @param {Route} route */
-function navKey(route) {
-  if (route.name === 'library') {
-    const tab = route.query.get('tab');
-    return tab === 'watchlist' || tab === 'favorites' ? tab : 'library';
-  }
-  return route.name;
-}
-
-/** @param {Route} route */
 function highlightNav(route) {
-  const key = navKey(route);
   for (const link of document.querySelectorAll('[data-nav]')) {
-    const nav = /** @type {HTMLElement} */ (link).dataset.nav;
-    const current = nav === key || (nav === 'library' && (key === 'watchlist' || key === 'favorites'));
-    if (current) link.setAttribute('aria-current', 'page');
+    if (/** @type {HTMLElement} */ (link).dataset.nav === route.name) link.setAttribute('aria-current', 'page');
     else link.removeAttribute('aria-current');
   }
+  highlightLibraryTab(route.name === 'library' ? route.query.get('tab') ?? 'watchlist' : '');
+}
+
+/** Counts next to each list in the "Your library" menu. */
+function paintLibraryCounts() {
+  const counts = library.counts();
+  for (const el of document.querySelectorAll('[data-count]')) {
+    const key = /** @type {keyof typeof counts} */ (/** @type {HTMLElement} */ (el).dataset.count);
+    el.textContent = String(counts[key] ?? 0);
+  }
+}
+
+/** Escape closes the hover/focus menu by moving focus back to its trigger. */
+function initNavMenu() {
+  const menu = document.querySelector('.navmenu');
+  menu?.addEventListener('keydown', (event) => {
+    if (/** @type {KeyboardEvent} */ (event).key !== 'Escape') return;
+    menu.classList.add('navmenu--closed');
+    /** @type {HTMLElement | null} */ (menu.querySelector('.navmenu__trigger'))?.focus();
+  });
+  menu?.addEventListener('mouseleave', () => menu.classList.remove('navmenu--closed'));
+  menu?.addEventListener('focusout', () => menu.classList.remove('navmenu--closed'));
 }
 
 /** @param {Route} route */
@@ -93,4 +104,7 @@ library.addEventListener('savefailed', () => {
   setTimeout(() => toast("Couldn't save in this browser", { detail: 'Storage is full or blocked, so this change will be lost on reload.' }), 0);
 });
 initShell();
+initNavMenu();
+paintLibraryCounts();
+library.addEventListener('change', paintLibraryCounts);
 startRouter(onRoute);
