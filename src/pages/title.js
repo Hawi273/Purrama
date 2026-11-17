@@ -118,14 +118,14 @@ function actionPanel(d, media, name, item) {
   const signal = pageSignal();
   const current = library.rating(media, d.id);
   /** @param {number} r @returns {import('../ui/mochi.js').MochiMood} */
-  const moodFor = (r) => (r === 0 ? 'curious' : r >= 4 ? 'rated' : r === 3 ? 'blink' : 'sad');
+  const moodFor = (r) => (r === 0 ? 'curious' : r >= 8 ? 'rated' : r >= 5 ? 'blink' : 'sad');
   const cat = h('div', { class: 'action-panel__cat' }, mochi(moodFor(current), 88));
   const hint = h('p', { class: 'action-panel__hint', text: current ? 'Tap your rating again to clear it.' : 'Tap a star to rate it.' });
   const stars = starsInput(current, (value) => {
     library.rate(item, value);
     cat.replaceChildren(mochi(moodFor(value), 88, value ? `Mochi reacting to your ${value}-star rating` : undefined));
     hint.textContent = value ? 'Saved. Tap your rating again to clear it.' : 'Rating cleared.';
-    toast(value ? `Rating saved` : 'Rating cleared', { detail: value ? `${name} · ${value} star${value > 1 ? 's' : ''}` : name });
+    toast(value ? `Rating saved` : 'Rating cleared', { detail: value ? `${name} · ${value}/10` : name });
   }, `Your rating for ${name}`);
 
   const watchlist = h('button', { type: 'button', class: 'pr-btn pr-btn--primary' });

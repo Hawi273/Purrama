@@ -79,7 +79,7 @@ function personalRails() {
   }
   // Recommendations seeded by the most recent title rated 4+ stars, favourited or saved.
   const seed = [
-    ...library.items('ratings').filter((r) => 'rating' in r && r.rating >= 4),
+    ...library.items('ratings').filter((r) => 'rating' in r && r.rating >= 8),
     ...library.items('favorites'),
     ...watchlist,
   ][0];

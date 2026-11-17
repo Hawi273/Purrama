@@ -16,24 +16,27 @@
  * @property {number} addedAt
  */
 
-/** @typedef {SavedTitle & { rating: number }} RatedTitle */
+/** @typedef {SavedTitle & { rating: number }} RatedTitle  rating is 1–10 (whole stars) */
 
 /**
  * @typedef {object} LibraryData
- * @property {2} version
+ * @property {3} version
  * @property {Record<string, SavedTitle>} watchlist
  * @property {Record<string, SavedTitle>} favorites
  * @property {Record<string, SavedTitle>} watched
  * @property {Record<string, RatedTitle>} ratings
  */
 
-export const STORE_KEY = 'purrama:library:v2';
+export const STORE_KEY = 'purrama:library:v3';
+/** v2 stored the same lists with 1–5 ratings; read once and converted to 1–10 (#9). */
+export const V2_KEY = 'purrama:library:v2';
 export const LEGACY_KEY = 'purrama:ratings:v1';
+export const MAX_RATING = 10;
 export const LISTS = /** @type {const} */ (['watchlist', 'favorites', 'watched']);
 
 /** @returns {LibraryData} */
 function empty() {
-  return { version: 2, watchlist: {}, favorites: {}, watched: {}, ratings: {} };
+  return { version: 3, watchlist: {}, favorites: {}, watched: {}, ratings: {} };
 }
 
 /**
@@ -67,8 +70,8 @@ function cleanTitle(value) {
 }
 
 /**
- * @param {unknown} raw   parsed JSON of the v2 store
- * @param {unknown} legacy parsed JSON of the v1 ratings store
+ * @param {unknown} raw   parsed JSON of the v3 store, or of the v2 store (ratings 1–5, doubled)
+ * @param {unknown} legacy parsed JSON of the v1 ratings store (ratings 1–5, doubled)
  * @returns {LibraryData}
  */
 export function parseStore(raw, legacy) {
@@ -82,13 +85,14 @@ export function parseStore(raw, legacy) {
         if (item) data[list][keyOf(item.media, item.id)] = item;
       }
     }
+    const oldScale = raw.version !== 3; // v2 rated 1–5
     if (isObject(raw.ratings)) {
       for (const value of Object.values(raw.ratings)) {
         const item = cleanTitle(value);
         const rating = isObject(value) ? value.rating : undefined;
-        if (item && typeof rating === 'number' && rating >= 1 && rating <= 5) {
-          data.ratings[keyOf(item.media, item.id)] = { ...item, rating: Math.round(rating) };
-        }
+        if (!item || typeof rating !== 'number') continue;
+        const scaled = oldScale ? (rating >= 1 && rating <= 5 ? Math.round(rating) * 2 : 0) : Math.round(rating);
+        if (scaled >= 1 && scaled <= MAX_RATING) data.ratings[keyOf(item.media, item.id)] = { ...item, rating: scaled };
       }
     }
   }
@@ -106,7 +110,7 @@ export function parseStore(raw, legacy) {
         poster_path: typeof value.poster_path === 'string' ? value.poster_path : null,
         date: typeof value.release_date === 'string' ? value.release_date : '',
         addedAt: typeof value.ratedAt === 'number' ? value.ratedAt : 0,
-        rating: Math.round(rating),
+        rating: Math.round(rating) * 2,
       };
     }
   }
@@ -132,12 +136,17 @@ class Library extends EventTarget {
   }
 
   load() {
+    const current = readJson(STORE_KEY);
+    const previous = current === null ? readJson(V2_KEY) : null;
     const legacy = readJson(LEGACY_KEY);
-    this.data = parseStore(readJson(STORE_KEY), legacy);
-    // Migrate v1 once: write v2, then drop the old key so a rating cleared
-    // later is not restored from it on the next load.
-    if (legacy !== null && this.persist()) {
-      try { localStorage.removeItem(LEGACY_KEY); } catch { /* keep it; parseStore ignores duplicates */ }
+    this.data = parseStore(current ?? previous, legacy);
+    // Migrate older stores once: write v3, then drop them so a rating cleared
+    // later is not restored from an old copy on the next load.
+    if ((previous !== null || legacy !== null) && this.persist()) {
+      try {
+        localStorage.removeItem(V2_KEY);
+        localStorage.removeItem(LEGACY_KEY);
+      } catch { /* keep them; v3 is read first from now on */ }
     }
     return this;
   }
@@ -198,13 +207,13 @@ class Library extends EventTarget {
   }
 
   /**
-   * Rate 1–5, or 0 to clear. Rating a title also marks it watched.
+   * Rate 1–10, or 0 to clear. Rating a title also marks it watched.
    * @param {Omit<SavedTitle, 'addedAt'>} title
    * @param {number} value
    */
   rate(title, value) {
     const key = keyOf(title.media, title.id);
-    if (value >= 1 && value <= 5) {
+    if (value >= 1 && value <= MAX_RATING) {
       this.data.ratings[key] = { ...title, rating: Math.round(value), addedAt: Date.now() };
       if (!this.data.watched[key]) this.data.watched[key] = { ...title, addedAt: Date.now() };
     } else {

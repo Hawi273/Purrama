@@ -345,13 +345,21 @@ button.pr-chip:hover:not([aria-pressed="true"]) { background: var(--surface-100)
 .action-panel__cat { grid-row: span 1; }
 .action-panel__rate { display: grid; gap: 6px; }
 .action-panel__hint { font: 600 13px/1.4 var(--font-body); color: var(--text-secondary); }
-/* Touch targets: the kit asks for 44px; its star buttons are 30px. */
-@media (pointer: coarse) { .action-panel .pr-stars button { min-height: 44px; padding: 9px 5px; } .action-panel .pr-stars { gap: 0; } }
 .action-panel .actions { grid-column: 1 / -1; }
-@media (min-width: 1100px) {
-  .action-panel { grid-template-columns: auto auto 1fr; }
-  .action-panel .actions { grid-column: auto; justify-content: flex-end; }
+
+/* Ten-star rating, 1–10 (#9). */
+.stars-10__wrap { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 14px; }
+.stars-10 { gap: 2px; }
+.stars-10__value { font: 600 22px/1 var(--font-display); color: var(--text-primary); min-width: 3.2em; }
+/* Touch targets: 44px tall (the kit's minimum); ten stars must still fit a phone. */
+@media (pointer: coarse) { .action-panel .stars-10 button { min-height: 44px; padding: 9px 1px; } .action-panel .stars-10 { gap: 0; } }
+@media (max-width: 599px) {
+  .action-panel { grid-template-columns: minmax(0, 1fr); }
+  .action-panel__cat { display: none; } /* ten stars need the whole width */
+  .stars-10 svg { width: 24px; height: 24px; }
 }
+.rating-badge { display: inline-flex; align-items: center; gap: 4px; font: 800 14px/1 var(--font-body); color: var(--text-primary); white-space: nowrap; }
+.rating-badge .pr-stars svg { width: 16px; height: 16px; }
 
 .detail-layout { display: grid; gap: 48px; align-items: start; }
 .detail-main { display: grid; gap: 48px; min-width: 0; }

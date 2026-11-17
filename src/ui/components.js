@@ -155,38 +155,45 @@ export function filmRow(row) {
       row.right ?? null));
 }
 
+/** Ratings are whole stars out of 10 (#9; a deliberate exception to the kit's 5). */
+export const RATING_MAX = 10;
+
 /**
- * Read-only stars (whole stars, the kit's display variant).
- * @param {number} value 0–5
- * @param {boolean} [small]
+ * Your rating in a list row: one amber star and "8/10" (ten stars don't fit a phone row).
+ * @param {number} value 1–10
  */
-export function starsDisplay(value, small = true) {
-  const box = h('span', { class: `pr-stars${small ? ' pr-stars--sm' : ''}`, role: 'img', 'aria-label': `${value} out of 5 stars` });
-  for (let i = 1; i <= 5; i++) box.appendChild(h('span', { class: i <= value ? 'is-on' : '' }, starIcon()));
-  return box;
+export function starsDisplay(value) {
+  return h('span', { class: 'rating-badge', role: 'img', 'aria-label': `Your rating: ${value} out of ${RATING_MAX}` },
+    h('span', { class: 'pr-stars pr-stars--sm' }, h('span', { class: 'is-on' }, starIcon())),
+    `${value}/${RATING_MAX}`);
 }
 
 /**
- * Interactive rating (kit's input variant). Click the current star again to clear.
+ * Interactive rating, 1–10 whole stars (the kit's star style). Click the
+ * current star again to clear. Shows "8/10" beside the stars.
  * @param {number} value
  * @param {(value: number) => void} onRate
  * @param {string} label
  */
 export function starsInput(value, onRate, label) {
-  const group = h('span', { class: 'pr-stars', role: 'group', 'aria-label': label });
+  const group = h('span', { class: 'pr-stars stars-10', role: 'group', 'aria-label': label });
+  const readout = h('span', { class: 'stars-10__value', 'aria-hidden': 'true' });
   let current = value;
-  const buttons = [1, 2, 3, 4, 5].map((n) => h('button', {
+  const buttons = Array.from({ length: RATING_MAX }, (_, i) => i + 1).map((n) => h('button', {
     type: 'button',
-    'aria-label': `${n} star${n > 1 ? 's' : ''}`,
+    'aria-label': `${n} out of ${RATING_MAX}`,
     on: { click: () => { current = n === current ? 0 : n; paint(); onRate(current); } },
   }, starIcon()));
-  const paint = () => buttons.forEach((b, i) => {
-    b.classList.toggle('is-on', i < current);
-    b.setAttribute('aria-pressed', String(i + 1 === current));
-  });
+  const paint = () => {
+    buttons.forEach((b, i) => {
+      b.classList.toggle('is-on', i < current);
+      b.setAttribute('aria-pressed', String(i + 1 === current));
+    });
+    readout.textContent = current ? `${current}/${RATING_MAX}` : `–/${RATING_MAX}`;
+  };
   group.append(...buttons);
   paint();
-  return group;
+  return h('span', { class: 'stars-10__wrap' }, group, readout);
 }
 
 /**

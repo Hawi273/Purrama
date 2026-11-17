@@ -13,7 +13,7 @@ Browser (GitHub Pages: index.html, src/, styles/)  →  worker/ (Cloudflare Work
 
 - **The site is static and public.** No build step: GitHub Pages serves the repo root as-is. It contains **no keys**; it only knows the Worker's URL (`config.js`).
 - **The Worker** adds the TMDB **API Read Access Token** as a `Bearer` header. The token is a Worker secret, never a file in this repo. The Worker only forwards an allowlist of read-only TMDB endpoints and validated query parameters, only answers the origins in `worker/wrangler.toml`, limits each visitor IP to 120 requests a minute, and caches answers at the edge.
-- **Your lists** (watchlist, favourites, watched, 1–5 star ratings) are saved in your browser's `localStorage`. There are no accounts, so they stay on that device and browser. Ratings from purrama v1 carry over automatically.
+- **Your library** (watchlist, favourites, watched, and ratings from 1 to 10 stars) is saved in your browser's `localStorage`. There are no accounts, so it stays on that device and browser. Older ratings (1–5 stars, from earlier versions) are converted once to the 1–10 scale.
 
 ### Project layout
 
